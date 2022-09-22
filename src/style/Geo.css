@@ -1,0 +1,7 @@
+.globeHolder {
+    /* border-left: 1pt lightgrey solid;
+    border-bottom: 1pt lightgrey solid; */
+    position: fixed;
+    top:5px;
+    right:5px;
+}
