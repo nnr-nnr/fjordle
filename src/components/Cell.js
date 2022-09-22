@@ -7,6 +7,8 @@ import {
   useCurrGuess,
   useCurrGuessUpdate,
   useAnswer,
+  // useAllGuess,
+  // useAllGuessUpdate,
 } from "../utils/Context";
 
 export default function Cell({ id }) {
@@ -17,6 +19,7 @@ export default function Cell({ id }) {
   const guessIndex = useGuessIndex();
   const updateGuessIndex = useGuessIndexUpdate();
   const ans = useAnswer();
+  // const updateGuesses = useAllGuessUpdate();
 
   const checkGuess = () => {
     const classes = "rowInd" + (id % 5).toString();

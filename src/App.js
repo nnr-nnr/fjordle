@@ -15,6 +15,7 @@ function App() {
 
         <Grid />
         <MyGlobe />
+        {/* <World /> */}
 
         <Keyboard />
         {/* <Map /> */}
