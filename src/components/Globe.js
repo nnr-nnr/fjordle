@@ -12,20 +12,23 @@ export default function MyGlobe() {
       <Globe
         backgroundColor="white"
         showGraticules={true}
-        height={300}
-        width={300}
+        height={200}
+        width={200}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
         hexBinPointsData={[
-          { lat: 0, lng: 0, value: 20 },
+          { lat: 0.92, lng: 5.84, value: 15, guess: 2 },
           // { lat: 0, lng: 0, value: 10 },
-          { lat: 30, lng: 0, value: 20 },
-          { lat: -30, lng: -10, value: 20 },
+          { lat: 30.55, lng: 1.32, value: 15, guess: 1 },
+          { lat: -43.6, lng: -10.86, value: 15, guess: 3 },
         ]}
-        hexTopColor={() => "#ff0000"}
-        hexSideColor={() => "#ff0000"}
+        hexTopColor={() => "red"}
+        hexSideColor={() => "red"}
         hexBinPointWeight={"value"}
-        hexLabel={(d) => `(${d.points[0].lat}, ${d.points[0].lng})`}
+        hexLabel={(d) => `
+        <b>Attempt ${d.points[0]["guess"]}:</b> <br>(${d.points[0]["lat"]}, ${d.points[0]["lng"]})
+      `}
       />
     </div>
   );
 }
+// "rgb(198,179,102)"

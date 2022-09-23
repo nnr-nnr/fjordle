@@ -4,21 +4,18 @@ import Keyboard from "./components/Keyboard";
 // import Map from "./components/Map";
 import { GuessProvider } from "./utils/Context";
 import MyGlobe from "./components/Globe";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <GuessProvider>
       <div className="App">
-        <div>
-          <h1>Fjordle</h1>
-        </div>
+        <Navbar />
 
+        {/* <Map /> */}
         <Grid />
         <MyGlobe />
-        {/* <World /> */}
-
         <Keyboard />
-        {/* <Map /> */}
       </div>
     </GuessProvider>
   );

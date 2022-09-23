@@ -1,23 +1,32 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../style/Keyboard.css";
 
 import { useAllGuess } from "../utils/Context";
 
 export default function Key({ letter }) {
-  // useEffect(() => {
-  //   // if it's not in the word
-  //   // if it's in the word but wrong placement
-  //   // if it was guessed correctly
-  // });
   const guesses = useAllGuess();
+
+  const handlePress = (event) => {
+    const key = event.key;
+  };
 
   return (
     <button
-      className={`kybrdKey ${guesses.includes(letter) ? "green" : ""}`}
+      className={`kybrdKey ${
+        guesses.green.includes(letter)
+          ? "green"
+          : guesses.yellow.includes(letter)
+          ? "yellow"
+          : guesses.grey.includes(letter)
+          ? "grey"
+          : ""
+      }`}
       type="button"
       key={letter}
+      onClick={handlePress}
     >
       {letter}
     </button>
   );
 }
+// ${guesses.includes(letter) ? "green" : ""}

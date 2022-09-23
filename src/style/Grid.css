@@ -1,112 +1,122 @@
+.guideHolder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  /* border: 1pt hotpink solid; */
+}
+
+.guide {
+  font-size: small;
+  letter-spacing: 1rem;
+  /* border: 1pt navajowhite solid; */
+}
+
 .gridHolder {
-    width: 350px;
-    height: 420px;
-    padding:10px;
+  /* border: 1pt hotpink solid; */
+  width: 350px;
+  height: 420px;
+  padding: 10px;
 
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(6,1fr);
-    /* column-gap: 3px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  /* column-gap: 3px;
     row-gap: 3px; */
-    box-sizing: border-box;
-
+  box-sizing: border-box;
 }
 
 .cell {
-    background-color: white;
-    border: 2px lightgray solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin:2px;
-    color:black;
+  background-color: white;
+  border: 2px lightgray solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  color: black;
 }
 
 .curr {
-    background-color: hotpink;
+  background-color: hotpink;
 }
 
-span{
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: capitalize;
+span {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
-.cell.guessed{
-    border: 2px grey solid;
-    animation-name: tileGuess;
-    animation-duration: 100ms;
+.cell.guessed {
+  border: 2px grey solid;
+  animation-name: tileGuess;
+  animation-duration: 100ms;
 }
 
 .cell.green {
-    --background-color: rgb(121,167,107);
-    --border-color: rgb(121,167,107);
+  --background-color: rgb(121, 167, 107);
+  --border-color: rgb(121, 167, 107);
 }
 
 .cell.yellow {
-    --background-color: rgb(198,179,102);
-    --border-color: rgb(198,179,102);
+  --background-color: rgb(198, 179, 102);
+  --border-color: rgb(198, 179, 102);
 }
 
 .cell.grey {
-    --background-color: rgb(121, 121, 126);
-    --border-color: rgb(121, 121, 126);
+  --background-color: rgb(121, 121, 126);
+  --border-color: rgb(121, 121, 126);
 }
 
 .cell.rowInd0 {
-    animation: flip 1s ease forwards;
+  animation: flip 1s ease forwards;
 }
 
 .cell.rowInd1 {
-    animation: flip 1s ease forwards .3s;
+  animation: flip 1s ease forwards 0.3s;
 }
 
 .cell.rowInd2 {
-    animation: flip 1s ease forwards .6s;
+  animation: flip 1s ease forwards 0.6s;
 }
 
 .cell.rowInd3 {
-    animation: flip 1s ease forwards .9s;
+  animation: flip 1s ease forwards 0.9s;
 }
 .cell.rowInd4 {
-    animation: flip 1s ease forwards 1.2s;
+  animation: flip 1s ease forwards 1.2s;
 }
 
-
 @keyframes tileGuess {
-    50%  {
-        margin:0px;
-    }
+  50% {
+    margin: 0px;
   }
-
+}
 
 /* flip animation */
 
 @keyframes flip {
-    0%  {
-        transform:rotateX(0);
-        border-color:  grey ;
-        background-color: white;
-        color:black;
-    }
-    45%  {
-        transform:rotateX(90deg);
-        border-color:  grey ;
-        background-color: white;
-        color:black;
-    }
-    55%  {
-        transform:rotateX(90deg);
-        border-color:  var(--border-color) ;
-        background-color: var(--background-color);
-        color:white;
-    }
-    100%  {
-        transform:rotateX(0);
-        border-color:  var(--border-color) ;
-        background-color: var(--background-color);
-        color:white;
-        
-    }
-    
+  0% {
+    transform: rotateX(0);
+    border-color: grey;
+    background-color: white;
+    color: black;
+  }
+  45% {
+    transform: rotateX(90deg);
+    border-color: grey;
+    background-color: white;
+    color: black;
+  }
+  55% {
+    transform: rotateX(90deg);
+    border-color: var(--border-color);
+    background-color: var(--background-color);
+    color: white;
+  }
+  100% {
+    transform: rotateX(0);
+    border-color: var(--border-color);
+    background-color: var(--background-color);
+    color: white;
+  }
 }

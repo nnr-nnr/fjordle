@@ -7,19 +7,19 @@ import {
   useCurrGuess,
   useCurrGuessUpdate,
   useAnswer,
-  // useAllGuess,
-  // useAllGuessUpdate,
+  useAllGuess,
+  useAllGuessUpdate,
 } from "../utils/Context";
 
 export default function Cell({ id }) {
   const [value, setValue] = useState("");
   const currGuess = useCurrGuess();
   const updateCurrGuess = useCurrGuessUpdate();
-
+  const updateAllGuess = useAllGuessUpdate();
+  const allGuesses = useAllGuess();
   const guessIndex = useGuessIndex();
   const updateGuessIndex = useGuessIndexUpdate();
   const ans = useAnswer();
-  // const updateGuesses = useAllGuessUpdate();
 
   const checkGuess = () => {
     const classes = "rowInd" + (id % 5).toString();
@@ -41,6 +41,7 @@ export default function Cell({ id }) {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
+      console.log(allGuesses);
       const key = event.key;
       // check backspace
       if (key === "Backspace") {
@@ -67,7 +68,12 @@ export default function Cell({ id }) {
         }
       } else if (key === "Enter" && guessIndex % 5 === 4 && value !== "") {
         updateGuessIndex(guessIndex + 1);
+        [...currGuess].forEach((letter, index) =>
+          updateAllGuess(letter.toUpperCase(), index)
+        );
+        // updateAllGuess(currGuess);
         updateCurrGuess("");
+        // updateGuesses(value);
       }
     };
 

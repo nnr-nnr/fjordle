@@ -3,11 +3,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:space-between;
-  /* border: 2pt darksalmon solid; */
+  justify-content: space-between;
   height: 100vh;
 }
 
-h1 {
-  font-family: 'Roboto Slab', serif;
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  text-align: end;
+  border-bottom: 1pt lightgray solid;
+}
+nav > * {
+  /* border: solid red 2pt; */
+}
+
+.title {
+  font-family: "Roboto Slab", serif;
+  font-size: 2.5rem;
+}
+
+i {
+  font-size: 30px !important;
+}
+
+.icons {
+  position: absolute;
+  left: 15px;
 }

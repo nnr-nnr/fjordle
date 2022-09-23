@@ -2,6 +2,7 @@
   /* border-left: 1pt lightgrey solid;
     border-bottom: 1pt lightgrey solid; */
   position: fixed;
-  top: 5px;
+  top: calc(4rem + 5px);
   right: 5px;
+  /* border: 2pt red solid; */
 }
