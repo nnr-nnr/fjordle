@@ -29,6 +29,12 @@ i {
   font-size: 30px !important;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 .icons {
   position: absolute;
   left: 15px;

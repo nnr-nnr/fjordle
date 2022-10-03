@@ -3,17 +3,21 @@ import "../style/Keyboard.css";
 import Key from "./Key";
 
 export default function Keyboard() {
-  const row1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"].map(
-    (letter, index) => <Key letter={letter} key={index} />
-  );
-  const row2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"].map(
-    (letter, index) => <Key letter={letter} key={index + row1.length} />
-  );
-  const row3 = ["ENTER", "Z", "X", "C", "V", "B", "N", "M"].map(
-    (letter, index) => (
-      <Key letter={letter} key={index + row1.length + row2.length} />
-    )
-  );
+  const row = [
+    "ENTER",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "-",
+    "+",
+  ].map((letter, index) => <Key letter={letter} key={index} />);
   const backspace = (
     <Key
       letter={
@@ -23,10 +27,8 @@ export default function Keyboard() {
   );
   return (
     <div className="board">
-      <div className="kybrdRow">{row1}</div>
-      <div className="kybrdRow">{row2}</div>
       <div className="kybrdRow">
-        {row3} {backspace}{" "}
+        {row} {backspace}{" "}
       </div>
     </div>
   );

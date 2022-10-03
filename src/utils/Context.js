@@ -8,6 +8,17 @@ const AnswerContext = React.createContext();
 const AllGuessContext = React.createContext();
 const AllGuessUpdateContext = React.createContext();
 
+const RowIndexContext = React.createContext();
+const RowIndexUpdateContext = React.createContext();
+
+export function useRowIndex() {
+  return useContext(RowIndexContext);
+}
+
+export function useRowIndexUpdate() {
+  return useContext(RowIndexUpdateContext);
+}
+
 export function useGuessIndex() {
   return useContext(GuessIndexContext);
 }
@@ -37,10 +48,11 @@ export function useGuessIndexUpdate() {
 }
 
 export function GuessProvider({ children }) {
-  const [guessIndex, setGuessIndex] = useState(0);
-  const [currGuess, setCurrGuess] = useState("");
+  const [guessIndex, setGuessIndex] = useState(0); // MOVE TO GRID PROPERTY
+  const [rowIndex, setRowIndex] = useState(0); //MOVE TO GRID PROPERTY
+  const [currGuess, setCurrGuess] = useState(""); // MOVE TO GRID PROPERTY
   const [allGuess, setAllGuess] = useState({ green: [], yellow: [], grey: [] });
-  const [ans, setAns] = useState("NIVAS");
+  const [ans, setAns] = useState("+192-1732");
 
   function updateGuessIndex(i) {
     setGuessIndex(i);
@@ -48,12 +60,21 @@ export function GuessProvider({ children }) {
   function updateCurrGuess(i) {
     setCurrGuess(i);
   }
+  function updateRowIndex(i) {
+    setRowIndex(i);
+  }
 
-  function updateAllGuess(letter, index) {
-    console.log(letter);
+  function updateAllGuess(letter, index, decimalIndex) {
+    // console.log(letter);
 
-    if (ans.indexOf(letter) === index) {
-      console.log("green letter", letter);
+    // console.log("\n\nans", ans);
+    // console.log("letter", letter);
+    // console.log("ans.indexOf(letter)", ans.indexOf(letter));
+    // console.log("ans[decimalIndex]", ans[decimalIndex]);
+    // console.log("index of letter in guess", index);
+
+    if (ans[index] === letter) {
+      console.log("green");
       setAllGuess((prevState) => ({
         green:
           prevState.green.indexOf(letter) === -1
@@ -91,15 +112,19 @@ export function GuessProvider({ children }) {
     <AnswerContext.Provider value={ans}>
       <GuessIndexContext.Provider value={guessIndex}>
         <GuessIndexUpdateContext.Provider value={updateGuessIndex}>
-          <CurrGuessContext.Provider value={currGuess}>
-            <CurrGuessUpdateContext.Provider value={updateCurrGuess}>
-              <AllGuessContext.Provider value={allGuess}>
-                <AllGuessUpdateContext.Provider value={updateAllGuess}>
-                  {children}
-                </AllGuessUpdateContext.Provider>
-              </AllGuessContext.Provider>
-            </CurrGuessUpdateContext.Provider>
-          </CurrGuessContext.Provider>
+          <RowIndexContext.Provider value={rowIndex}>
+            <RowIndexUpdateContext.Provider value={updateRowIndex}>
+              <CurrGuessContext.Provider value={currGuess}>
+                <CurrGuessUpdateContext.Provider value={updateCurrGuess}>
+                  <AllGuessContext.Provider value={allGuess}>
+                    <AllGuessUpdateContext.Provider value={updateAllGuess}>
+                      {children}
+                    </AllGuessUpdateContext.Provider>
+                  </AllGuessContext.Provider>
+                </CurrGuessUpdateContext.Provider>
+              </CurrGuessContext.Provider>
+            </RowIndexUpdateContext.Provider>
+          </RowIndexContext.Provider>
         </GuessIndexUpdateContext.Provider>
       </GuessIndexContext.Provider>
     </AnswerContext.Provider>

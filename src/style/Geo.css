@@ -6,3 +6,10 @@
   right: 5px;
   /* border: 2pt red solid; */
 }
+
+.mapHolder {
+  border: grey 3pt solid;
+  border-radius: 5px;
+  width: 350px;
+  height: 250px;
+}

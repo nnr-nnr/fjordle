@@ -8,6 +8,8 @@ export default function Key({ letter }) {
 
   const handlePress = (event) => {
     const key = event.key;
+    console.log("key letter", letter);
+    console.log(guesses);
   };
 
   return (
@@ -29,4 +31,3 @@ export default function Key({ letter }) {
     </button>
   );
 }
-// ${guesses.includes(letter) ? "green" : ""}
