@@ -59,6 +59,7 @@ export function GuessProvider({ children }) {
   }
   function updateCurrGuess(i) {
     setCurrGuess(i);
+    console.log("curr guess", i);
   }
   function updateRowIndex(i) {
     setRowIndex(i);

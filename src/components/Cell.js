@@ -89,21 +89,34 @@ export default function Cell({ id, decimalIndex, toggleInvalidGuess, rowNum }) {
 
         // check backspace
         if (key === "Backspace") {
-          console.log("Backspace");
+          // console.log("Backspace");
           // check first guess, not first in row
           if (id % 12 === 0) {
+            console.log("Backspace1");
             setValue("+/-");
-          } else {
-            setValue(isSignedCell() ? "+/-" : "");
+            updateCurrGuess(currGuess.substring(0, currGuess.length - 1));
+          } else if (value === "" || value === "+/") {
+            console.log("BackspaceR");
+            updateCurrGuess(currGuess.substring(0, currGuess.length - 1) + "R");
             skipPrevCell()
               ? updateGuessIndex(guessIndex - 2)
               : updateGuessIndex(guessIndex - 1);
+          } else {
+            console.log("Backspace3");
+            setValue(isSignedCell() ? "+/-" : "");
+            updateCurrGuess(currGuess.substring(0, currGuess.length - 1));
           }
-          updateCurrGuess(currGuess.substring(0, currGuess.length - 1));
+          // END NEW
+          // setValue(isSignedCell() ? "+/-" : "");
+          // skipPrevCell()
+          //   ? updateGuessIndex(guessIndex - 2)
+          //   : updateGuessIndex(guessIndex - 1);
+
+          // updateCurrGuess(currGuess.substring(0, currGuess.length - 1));
         } // check alphabetical
         else if (isSignedCell()) {
           if (key.match(/\+|-/) && key.length === 1) {
-            console.log("+/-");
+            // console.log("+/-");
             setValue(key);
             updateCurrGuess(currGuess + key);
             skipNextCell()
@@ -113,11 +126,11 @@ export default function Cell({ id, decimalIndex, toggleInvalidGuess, rowNum }) {
         } else if (key.match(/[0-9]/) && key.length === 1) {
           // check last in row
           if (id % 12 === 11 && value === "") {
-            console.log("0-9 ( last)");
+            // console.log("0-9 ( last)");
             setValue(key);
             updateCurrGuess(currGuess + key);
           } else if (id % 12 < 11) {
-            console.log("0-9");
+            // console.log("0-9");
             setValue(key);
             updateCurrGuess(currGuess + key);
             skipNextCell()
@@ -126,7 +139,7 @@ export default function Cell({ id, decimalIndex, toggleInvalidGuess, rowNum }) {
           }
         } else if (key === "Enter" && id % 12 === 11 && value !== "") {
           if (isValidGuess()) {
-            console.log("Enter (valid)");
+            // console.log("Enter (valid)");
             updatecurrRowIndex(currRowIndex + 1);
             updateGuessIndex(guessIndex + 1);
             [...currGuess].forEach((letter, index) => {
@@ -146,12 +159,17 @@ export default function Cell({ id, decimalIndex, toggleInvalidGuess, rowNum }) {
         // console.log("id", id);
         // console.log("guessIndex", guessIndex);
         // console.log("currGuess", currGuess);
-        // console.log("ans", ans);
+        console.log("ans", ans);
         // console.log("currRowIndex", currRowIndex);
         // console.log("allGuesses", allGuesses);
       };
 
       if (guessIndex === id) {
+        if (currGuess.indexOf("R") > -1) {
+          updateCurrGuess(currGuess.substring(0, currGuess.length - 1));
+
+          setValue("");
+        }
         document.addEventListener("keydown", handleKeyDown);
         return () => {
           document.removeEventListener("keydown", handleKeyDown);
