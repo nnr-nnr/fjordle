@@ -3,13 +3,14 @@ import "../style/Keyboard.css";
 
 import { useAllGuess } from "../utils/Context";
 
-export default function Key({ letter }) {
+export default function Key({ letter, id }) {
   const guesses = useAllGuess();
 
   const handlePress = (event) => {
-    const key = event.key;
-    console.log("key letter", letter);
-    console.log(guesses);
+    const keyboardClick = new KeyboardEvent("keydown", {
+      key: id,
+    });
+    document.dispatchEvent(keyboardClick);
   };
 
   return (

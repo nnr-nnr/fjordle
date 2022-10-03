@@ -89,32 +89,22 @@ export default function Cell({ id, decimalIndex, toggleInvalidGuess, rowNum }) {
 
         // check backspace
         if (key === "Backspace") {
-          // console.log("Backspace");
-          // check first guess, not first in row
           if (id % 12 === 0) {
-            console.log("Backspace1");
+            // console.log("Backspace1");
             setValue("+/-");
             updateCurrGuess(currGuess.substring(0, currGuess.length - 1));
           } else if (value === "" || value === "+/") {
-            console.log("BackspaceR");
+            // console.log("BackspaceR");
             updateCurrGuess(currGuess.substring(0, currGuess.length - 1) + "R");
             skipPrevCell()
               ? updateGuessIndex(guessIndex - 2)
               : updateGuessIndex(guessIndex - 1);
           } else {
-            console.log("Backspace3");
+            // console.log("Backspace3");
             setValue(isSignedCell() ? "+/-" : "");
             updateCurrGuess(currGuess.substring(0, currGuess.length - 1));
           }
-          // END NEW
-          // setValue(isSignedCell() ? "+/-" : "");
-          // skipPrevCell()
-          //   ? updateGuessIndex(guessIndex - 2)
-          //   : updateGuessIndex(guessIndex - 1);
-
-          // updateCurrGuess(currGuess.substring(0, currGuess.length - 1));
-        } // check alphabetical
-        else if (isSignedCell()) {
+        } else if (isSignedCell()) {
           if (key.match(/\+|-/) && key.length === 1) {
             // console.log("+/-");
             setValue(key);

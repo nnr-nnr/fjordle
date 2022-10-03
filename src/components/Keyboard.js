@@ -17,9 +17,13 @@ export default function Keyboard() {
     "9",
     "-",
     "+",
-  ].map((letter, index) => <Key letter={letter} key={index} />);
+  ].map((letter, index) => (
+    <Key letter={letter} id={index === 0 ? "Enter" : letter} key={index} />
+  ));
   const backspace = (
     <Key
+      id={"Backspace"}
+      key={12}
       letter={
         <i className="fa fa-angle-double-left icon" aria-hidden="true"></i>
       }
