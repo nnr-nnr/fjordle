@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 const GuessIndexContext = React.createContext();
 const GuessIndexUpdateContext = React.createContext();
@@ -51,7 +51,7 @@ export function GuessProvider({ children }) {
   const [guessIndex, setGuessIndex] = useState(0); // MOVE TO GRID PROPERTY
   const [rowIndex, setRowIndex] = useState(0); //MOVE TO GRID PROPERTY
   const [currGuess, setCurrGuess] = useState(""); // MOVE TO GRID PROPERTY
-  const [allGuess, setAllGuess] = useState({ green: [], yellow: [], grey: [] });
+  const [allGuess, setAllGuess] = useState({ green: [], yellow: [], grey: [] }); //check where this is used
   const [ans, setAns] = useState("+192-1732");
 
   function updateGuessIndex(i) {
@@ -64,6 +64,19 @@ export function GuessProvider({ children }) {
   function updateRowIndex(i) {
     setRowIndex(i);
   }
+
+  // function updateAns() {
+  //   useEffect(() => {
+  //     fetch("http://localhost:3000/users")
+  //       .then((response) => response.json())
+  //       .then((res) => {
+  //         if (res && res.data) {
+  //           console.log(res.data);
+  //           setAns(res.data[0]);
+  //         }
+  //       });
+  //   });
+  // }
 
   function updateAllGuess(letter, index, decimalIndex) {
     // console.log(letter);
@@ -108,6 +121,8 @@ export function GuessProvider({ children }) {
 
     // console.log("allGuess in context: ", allGuess);
   }
+
+  // updateAns();
 
   return (
     <AnswerContext.Provider value={ans}>
