@@ -9,11 +9,15 @@
   height: 200px;
 }
 
+.globeHolder.mobile {
+  display: none;
+}
+
 .mapHolder {
   border: grey 3pt solid !important;
   border-radius: 5px;
-  width: 350px;
+  width: 450px;
   height: 250px;
 
-  margin-bottom: 30vh;
+  /* margin-bottom: 30vh; */
 }

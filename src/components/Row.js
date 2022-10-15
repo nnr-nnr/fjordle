@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "../style/Grid.css";
-import { useRowIndex } from "../utils/Context";
+// import { useRowIndex } from "../utils/Context";
 import Cell from "./Cell";
 
-export default function Row({ rowNum }) {
-  const [invalidGuess, toggleInvalidGuess] = useState(false);
-  //   const [classes, setClasses] = useState("");
+import { useHasSolvedContext } from "../utils/Context";
 
-  //   const currRowIndex = useRowIndex();
-  //   useEffect(() => {
-  //     if (invalidGuess) {
-  //       setClasses("invalid");
-  //     }
-  //     return setClasses("");
-  //   }, [currRowIndex]);
+import { useRowIndex } from "../components/Grid";
+
+// CURR GUESSS
+const CurrGuessContext = React.createContext();
+const CurrGuessUpdateContext = React.createContext();
+export function useCurrGuess() {
+  return useContext(CurrGuessContext);
+}
+export function useCurrGuessUpdate() {
+  return useContext(CurrGuessUpdateContext);
+}
+
+export default function Row({ rowNum, addAttempt }) {
+  const hasSolved = useHasSolvedContext();
+  const rowIndex = useRowIndex();
+  // CURR GUESSS
+  const [currGuess, setCurrGuess] = useState("");
+  function updateCurrGuess(i) {
+    setCurrGuess(i);
+  }
+  const [invalidGuess, toggleInvalidGuess] = useState(false);
 
   const cells = [...Array(12).keys()].map((i) => (
     <Cell
@@ -22,11 +34,45 @@ export default function Row({ rowNum }) {
       key={i}
       rowNum={rowNum}
       toggleInvalidGuess={toggleInvalidGuess}
+      addAttempt={addAttempt}
     />
   ));
   return (
-    <div>
-      <div className={`row ${invalidGuess ? " invalid " : ""} `}>{cells}</div>
-    </div>
+    <CurrGuessContext.Provider value={currGuess}>
+      <CurrGuessUpdateContext.Provider value={updateCurrGuess}>
+        <div>
+          {/* check for hassolved */}
+          <div
+            className={`row ${invalidGuess ? " invalid " : ""} ${
+              hasSolved && rowIndex === rowNum + 1 ? "solved-row" : ""
+            } `}
+          >
+            {cells}
+          </div>
+        </div>
+      </CurrGuessUpdateContext.Provider>
+    </CurrGuessContext.Provider>
   );
 }
+
+// rowNum,
+// currGuess,
+// updateCurrGuess,
+// guessIndex,
+// setGuessIndex,
+// rowIndex,
+// setRowIndex,
+
+// <Cell
+//   id={i + rowNum * 12}
+//   decimalIndex={i > 10 ? i - 3 : i > 5 ? i - 2 : i > 3 ? i - 1 : i}
+//   key={i}
+//   rowNum={rowNum}
+//   toggleInvalidGuess={toggleInvalidGuess}
+//   currGuess={currGuess}
+//   updateCurrGuess={updateCurrGuess}
+//   guessIndex={guessIndex}
+//   setGuessIndex={setGuessIndex}
+//   rowIndex={rowIndex}
+//   setRowIndex={setRowIndex}
+// />

@@ -135,11 +135,63 @@ span {
 .cell.Ind11 {
   animation: flip 1s ease forwards 1.2s;
 }
+
+/* WHEN SOLVED */
+
+.row.solved-row > .cell.Ind0 {
+  animation: flip 1s ease forwards, solved-wave 0.75s ease forwards 1.2s;
+  /* calc(1.2s+0s); */
+}
+
+.row.solved-row > .cell.Ind1 {
+  animation: flip 1s ease forwards 100ms, solved-wave 0.75s ease forwards 1.3s;
+  /* calc(1.2s+100ms); */
+}
+
+.row.solved-row > .cell.Ind2 {
+  animation: flip 1s ease forwards 200ms, solved-wave 0.75s ease forwards 1.4s;
+}
+
+.row.solved-row > .cell.Ind3 {
+  animation: flip 1s ease forwards 300ms, solved-wave 0.75s ease forwards 1.5s;
+}
+.row.solved-row > .cell.Ind4 {
+  animation: flip 1s ease forwards 400ms, solved-wave 0.75s ease forwards 1.6s;
+}
+.row.solved-row > .cell.Ind5 {
+  animation: flip 1s ease forwards 500ms, solved-wave 0.75s ease forwards 1.7s;
+}
+
+.row.solved-row > .cell.Ind6 {
+  animation: flip 1s ease forwards 600ms, solved-wave 0.75s ease forwards 1.8s;
+}
+
+.row.solved-row > .cell.Ind7 {
+  animation: flip 1s ease forwards 700ms, solved-wave 0.75s ease forwards 1.9s;
+}
+
+.row.solved-row > .cell.Ind8 {
+  animation: flip 1s ease forwards 800ms, solved-wave 0.75s ease forwards 2s;
+}
+.row.solved-row > .cell.Ind9 {
+  animation: flip 1s ease forwards 900ms, solved-wave 0.75s ease forwards 2.1s;
+}
+
+.row.solved-row > .cell.Ind10 {
+  animation: flip 1s ease forwards 1s, solved-wave 0.75s ease forwards 2.2s;
+}
+.row.solved-row > .cell.Ind11 {
+  animation: flip 1s ease forwards 1.1s, solved-wave 0.75s ease forwards 2.3s;
+}
+
+/* INVALID ANS */
+
 .row.invalid {
   /* background-color: blue; */
   animation: invalidShake 0.15s ease-in-out forwards;
   animation-iteration-count: 4;
 }
+
 @keyframes tileGuess {
   50% {
     margin: 0px;
@@ -155,6 +207,18 @@ span {
   }
   66% {
     transform: translate(7px, 0);
+  }
+  100% {
+    transform: translate(0px, 0);
+  }
+}
+
+@keyframes solved-wave {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -30px);
   }
   100% {
     transform: translate(0px, 0);

@@ -1,11 +1,11 @@
 import React from "react";
-import "../style/Popup.css";
+import "../../style/Popup.css";
 
 export default function Popup({ handleClose }) {
   console.log("Popup");
   return (
     <div className="popup-box">
-      <div className="email-box">
+      <div className="content-box">
         <button type="button" onClick={handleClose}>
           <i className="fa fa-times" aria-hidden="true"></i>
         </button>
@@ -29,9 +29,16 @@ export default function Popup({ handleClose }) {
 
         <div className="examples">
           <h5>Examples</h5>
-          <p>The number 5 is in the coordinate pair and in the correct spot.</p>
-          <p>The letter 2 is in the coordinate pair but in the wrong spot.</p>
-          <p>The 8 is not in the coordinate pair in any spot.</p>
+          <p>
+            The number <b>5</b> is in the coordinate pair and in the correct
+            spot.
+          </p>
+          <p>
+            The letter <b>2</b> is in the coordinate pair but in the wrong spot.
+          </p>
+          <p>
+            The <b>8</b> is not in the coordinate pair in any spot.
+          </p>
         </div>
 
         <div className="contact">

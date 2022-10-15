@@ -1,4 +1,4 @@
-const values = [
+export const coordValues = [
   {
     lat: 38.98695,
     lng: -94.61968,
@@ -6,6 +6,7 @@ const values = [
     prov: "Kansas",
     state: "United States",
     name: "Meadow Lake Country Club",
+    strCoords: "",
   },
   {
     lat: -43.89834,
@@ -14,6 +15,7 @@ const values = [
     prov: "Canterbury",
     state: "New Zealand",
     name: "Leafield",
+    strCoords: "",
   },
   {
     lat: 64.87137,
@@ -22,6 +24,7 @@ const values = [
     prov: "Northern Ostrobothnia",
     state: "Finland",
     name: "Musta",
+    strCoords: "",
   },
   {
     lat: 46.98999,
@@ -30,6 +33,7 @@ const values = [
     prov: "Montana",
     state: "United States",
     name: "North Fork Sage Hen Creek",
+    strCoords: "",
   },
   {
     lat: 42.21667,
@@ -38,6 +42,7 @@ const values = [
     prov: "Ömnögovĭ",
     state: "Mongolia",
     name: "",
+    strCoords: "",
   },
   {
     lat: -22.95,
@@ -46,6 +51,7 @@ const values = [
     prov: "",
     state: "Australia",
     name: "",
+    strCoords: "",
   },
   {
     lat: 34.2,
@@ -54,6 +60,7 @@ const values = [
     prov: "Homs",
     state: "Syria",
     name: "ناحية القريتين (Al-Qaryatayn Subdistrict)",
+    strCoords: "",
   },
   {
     lat: 31.48038,
@@ -62,6 +69,7 @@ const values = [
     prov: "Sonora",
     state: "Mexico",
     name: "Cerro El Tullido",
+    strCoords: "",
   },
   {
     lat: 12.72261,
@@ -70,6 +78,7 @@ const values = [
     prov: "Kratie",
     state: "Cambodia",
     name: "Char Tnaol",
+    strCoords: "",
   },
   {
     lat: 16.72226,
@@ -78,6 +87,7 @@ const values = [
     prov: "Karnataka",
     state: "India",
     name: "Bhairvadgi",
+    strCoords: "",
   },
   {
     lat: -32.88786,
@@ -86,6 +96,7 @@ const values = [
     prov: "South Australia",
     state: "Australia",
     name: "Point Westall",
+    strCoords: "",
   },
   {
     lat: -1.90898,
@@ -94,6 +105,7 @@ const values = [
     prov: "Amazonas",
     state: "Brazil",
     name: "Fazenda Círculo Gaúcho",
+    strCoords: "",
   },
 
   {
@@ -103,6 +115,7 @@ const values = [
     prov: "Santa Cruz",
     state: "Bolivia",
     name: "Córrego Morro Branco",
+    strCoords: "",
   },
   {
     lat: 52.75,
@@ -111,6 +124,7 @@ const values = [
     prov: "Buryatiya Republic",
     state: "Russia",
     name: "",
+    strCoords: "",
   },
   {
     lat: -12.33333,
@@ -119,6 +133,7 @@ const values = [
     prov: "Bahia",
     state: "Brazil",
     name: "Sangradouro",
+    strCoords: "",
   },
   {
     lat: 55.14191,
@@ -127,6 +142,7 @@ const values = [
     prov: "Alberta",
     state: "Canada",
     name: "",
+    strCoords: "",
   },
   {
     lat: 66.51091,
@@ -135,6 +151,7 @@ const values = [
     prov: "Nunavut",
     state: "Canada",
     name: "",
+    strCoords: "",
   },
   {
     lat: 34.80387,
@@ -143,6 +160,7 @@ const values = [
     prov: "California",
     state: "United States",
     name: "Rainbow Farms (historical)",
+    strCoords: "",
   },
   {
     lat: 17.9521,
@@ -151,6 +169,7 @@ const values = [
     prov: "Red Sea",
     state: "Sudan",
     name: "",
+    strCoords: "",
   },
   {
     lat: 5.16667,
@@ -159,6 +178,7 @@ const values = [
     prov: "Oromiya",
     state: "Ethiopia",
     name: "",
+    strCoords: "",
   },
   {
     lat: 12.68,
@@ -167,6 +187,7 @@ const values = [
     prov: "Soqatra",
     state: "Yemen",
     name: "",
+    strCoords: "",
   },
   {
     lat: 42.18333,
@@ -175,21 +196,85 @@ const values = [
     prov: "",
     state: "Turkmenistan",
     name: "Chagali",
+    strCoords: "",
+  },
+  {
+    lat: 68.5,
+    lng: -132.666667,
+    city: "Sitidgi Lake",
+    prov: "Inuvik",
+    state: "Canada",
+    name: "",
+    strCoords: "",
+  },
+  {
+    lat: 54.68841,
+    lng: 110.81929,
+    city: "Alla",
+    prov: "Buryatiya Republic",
+    state: "Russia",
+    name: "Alla",
+    strCoords: "",
+  },
+  {
+    lat: 49.78934,
+    lng: 73.13738,
+    city: "Karagandy",
+    prov: "Karaganda",
+    state: "Kazakhstan",
+    name: "Malaya Bukpa",
+    strCoords: "",
+  },
+  {
+    lat: 32.85816,
+    lng: -109.45361,
+    city: "Topaz Tank",
+    prov: "Arizona",
+    state: "United States",
+    name: "",
+    strCoords: "",
+  },
+  {
+    lat: -52.82152,
+    lng: -72.90381,
+    city: "Isla Chandler",
+    prov: "Region of Magallanes",
+    state: "Chile",
+    name: "",
+    strCoords: "",
+  },
+  {
+    lat: -22.196389,
+    lng: 35.251667,
+    city: "Cabo Murriane",
+    prov: "Inhambane",
+    state: "Mozambique",
+    name: "Lago Nhachinhate",
+    strCoords: "",
+  },
+  {
+    lat: 50.66667,
+    lng: 6.03333,
+    city: "Lontzen",
+    prov: "",
+    state: "Belgium",
+    name: "",
+    strCoords: "",
+  },
+  {
+    lat: -19.0317,
+    lng: 28.78076,
+    city: "",
+    prov: "Matabeleland North",
+    state: "Zimbabwe",
+    name: "",
+    strCoords: "",
   },
 ];
 
-export default todayCoords = () => {
-  const start = new Date("2022 10 3");
-  const now = Date.now();
-  const nDays = Math.floor((now - start) / (60 * 60 * 1000 * 24));
-  return values[values.length % nDays];
-};
-
-// {
-//     lat: ,
-//     lng: ,
-//     city: "",
-//     prov: "",
-//     state: "",
-//     name: "",
-//   },
+// export default function todayCoords() {
+//   const start = new Date("2022 10 3");
+//   const now = Date.now();
+//   const nDays = Math.floor((now - start) / (60 * 60 * 1000 * 24));
+//   return coordValues[coordValues.length % nDays];
+// }

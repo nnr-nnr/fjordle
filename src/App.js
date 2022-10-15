@@ -2,36 +2,30 @@ import "./App.css";
 import React, { useState } from "react";
 import Grid from "./components/Grid";
 import Keyboard from "./components/Keyboard";
-// import Map from "./components/Map";
+import Map from "./components/Map";
 import { GuessProvider } from "./utils/Context";
 import MyGlobe from "./components/Globe";
 import Navbar from "./components/Navbar";
-import Popup from "./components/Popup";
-import * as ReactDOM from "react-dom/client";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("all years");
-
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
-
   // const root = ReactDOM.createRoot(document.getElementById("root")); //getElementById("root")
   // root.render(
+  const [attempts, setAttempts] = useState([]);
+  const addAttempt = (strCoords) => {
+    setAttempts(attempts.concat(strCoords));
+  };
   return (
     <>
       <GuessProvider>
         <div className="App">
-          <Navbar togglePopup={togglePopup} />
+          <Navbar attemptsLen={attempts.length} />
 
-          <MyGlobe />
+          <MyGlobe attempts={attempts} />
 
-          {/* <Map /> */}
-          <Grid />
+          <Map />
+          <Grid addAttempt={addAttempt} />
 
           <Keyboard />
-          {isOpen && <Popup handleClose={togglePopup} />}
         </div>
       </GuessProvider>
     </>

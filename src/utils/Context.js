@@ -1,108 +1,170 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 
-const GuessIndexContext = React.createContext();
-const GuessIndexUpdateContext = React.createContext();
-const CurrGuessContext = React.createContext();
-const CurrGuessUpdateContext = React.createContext();
-const AnswerContext = React.createContext();
+import { coordValues } from "../utils/Values";
+
+// // GUESS INDEX
+// const GuessIndexContext = React.createContext();
+// const GuessIndexUpdateContext = React.createContext();
+// export function useGuessIndex() {
+//   return useContext(GuessIndexContext);
+// }
+// export function useGuessIndexUpdate() {
+//   return useContext(GuessIndexUpdateContext);
+// }
+
+// // CURR GUESSS
+// const CurrGuessContext = React.createContext();
+// const CurrGuessUpdateContext = React.createContext();
+// export function useCurrGuess() {
+//   return useContext(CurrGuessContext);
+// }
+// export function useCurrGuessUpdate() {
+//   return useContext(CurrGuessUpdateContext);
+// }
+
+// HAS SOLVED
+const HasSolvedContext = React.createContext();
+const HasSolvedUpdateContext = React.createContext();
+export function useHasSolvedContext() {
+  return useContext(HasSolvedContext);
+}
+export function useHasSolvedUpdateContext() {
+  return useContext(HasSolvedUpdateContext);
+}
+// Solved codes:
+// 0 = has not solved, game not over
+// 1 = has solved, game over
+// 2 = has not solved, game over
+
+// ALL GUESSES
 const AllGuessContext = React.createContext();
 const AllGuessUpdateContext = React.createContext();
-
-const RowIndexContext = React.createContext();
-const RowIndexUpdateContext = React.createContext();
-
-export function useRowIndex() {
-  return useContext(RowIndexContext);
-}
-
-export function useRowIndexUpdate() {
-  return useContext(RowIndexUpdateContext);
-}
-
-export function useGuessIndex() {
-  return useContext(GuessIndexContext);
-}
-
-export function useCurrGuess() {
-  return useContext(CurrGuessContext);
-}
-
-export function useAnswer() {
-  return useContext(AnswerContext);
-}
-
 export function useAllGuess() {
   return useContext(AllGuessContext);
 }
-
 export function useAllGuessUpdate() {
   return useContext(AllGuessUpdateContext);
 }
 
-export function useCurrGuessUpdate() {
-  return useContext(CurrGuessUpdateContext);
+// // ROW INDEX
+// const RowIndexContext = React.createContext();
+// const RowIndexUpdateContext = React.createContext();
+// export function useRowIndex() {
+//   return useContext(RowIndexContext);
+// }
+// export function useRowIndexUpdate() {
+//   return useContext(RowIndexUpdateContext);
+// }
+
+// ANS
+const AnswerContext = React.createContext();
+export function useAnswer() {
+  return useContext(AnswerContext);
 }
 
-export function useGuessIndexUpdate() {
-  return useContext(GuessIndexUpdateContext);
-}
+const preFixCoordStrs = (coord, isLng) => {
+  const absCoord = Math.abs(coord);
+  let coordStrd = coord > 0 ? "+" : "-";
+  const len = isLng ? 5 : 4;
+  if (absCoord < 1) {
+    coordStrd = coordStrd
+      .concat("000", Math.round(absCoord * 10) / 10.0)
+      .replace(".", "");
+  } else if (absCoord < 10) {
+    coordStrd = coordStrd
+      .concat("00", Math.round(absCoord * 10) / 10.0)
+      .replace(".", "");
+  } else if (isLng && absCoord < 100) {
+    coordStrd = coordStrd
+      .concat("0", Math.round(absCoord * 10) / 10.0)
+      .replace(".", "");
+  } else {
+    coordStrd = coordStrd
+      .concat(Math.round(absCoord * 10) / 10.0)
+      .replace(".", "");
+  }
+
+  while (coordStrd.length < len) {
+    coordStrd = coordStrd.concat("0");
+  }
+
+  return coordStrd;
+};
+
+const strAnswer = (lat, lng) => {
+  let latStr = preFixCoordStrs(lat, false);
+  let lngStr = preFixCoordStrs(lng, true);
+  const ans = latStr.concat(lngStr);
+  console.log("lat, lng ans:", ans);
+  return ans;
+};
+
+const todayCoords = () => {
+  const start = new Date("October 10, 2022 00:00:00").getTime();
+  const now = Date.now();
+  const nDays = Math.floor((now - start) / (60 * 60 * 1000 * 24));
+  const data = coordValues[coordValues.length % nDays];
+  data.strCoords = strAnswer(data.lat, data.lng);
+  // console.log("ans", data);
+  return data;
+};
 
 export function GuessProvider({ children }) {
-  const [guessIndex, setGuessIndex] = useState(0); // MOVE TO GRID PROPERTY
-  const [rowIndex, setRowIndex] = useState(0); //MOVE TO GRID PROPERTY
-  const [currGuess, setCurrGuess] = useState(""); // MOVE TO GRID PROPERTY
-  const [allGuess, setAllGuess] = useState({ green: [], yellow: [], grey: [] }); //check where this is used
-  const [ans, setAns] = useState("+192-1732");
-
-  function updateGuessIndex(i) {
-    setGuessIndex(i);
-  }
-  function updateCurrGuess(i) {
-    setCurrGuess(i);
-    console.log("curr guess", i);
-  }
-  function updateRowIndex(i) {
-    setRowIndex(i);
-  }
-
-  // function updateAns() {
-  //   useEffect(() => {
-  //     fetch("http://localhost:3000/users")
-  //       .then((response) => response.json())
-  //       .then((res) => {
-  //         if (res && res.data) {
-  //           console.log(res.data);
-  //           setAns(res.data[0]);
-  //         }
-  //       });
-  //   });
+  // // GUESS INDEX
+  // const [guessIndex, setGuessIndex] = useState(0); // MOVE TO GRID PROPERTY
+  // function updateGuessIndex(i) {
+  //   setGuessIndex(i);
   // }
+
+  // // CURR GUESSS
+  // const [currGuess, setCurrGuess] = useState(""); // MOVE TO ROW (?)
+  // function updateCurrGuess(i) {
+  //   setCurrGuess(i);
+  // }
+
+  // ALL GUESSES
+  const [allGuess, setAllGuess] = useState({ green: [], yellow: [], grey: [] }); //check where this is used
+
+  // HAS SOLVED
+  const [hasSolved, setHasSolved] = useState(0);
+  // const toggleSolved = () => {
+  //   setHasSolved(!hasSolved);
+  // };
+
+  // // ROW INDEX
+  // const [rowIndex, setRowIndex] = useState(0); //MOVE TO GRID PROPERTY
+  // function updateRowIndex(i) {
+  //   setRowIndex(i);
+  // }
+
+  // ANS
+  const ans = todayCoords(); //useState("+192-1732");
 
   function updateAllGuess(letter, index, decimalIndex) {
     // console.log(letter);
-
     // console.log("\n\nans", ans);
     // console.log("letter", letter);
     // console.log("ans.indexOf(letter)", ans.indexOf(letter));
     // console.log("ans[decimalIndex]", ans[decimalIndex]);
     // console.log("index of letter in guess", index);
 
-    if (ans[index] === letter) {
+    const strCoords = ans.strCoords;
+    if (strCoords[index] === letter) {
       console.log("green");
       setAllGuess((prevState) => ({
         green:
-          prevState.green.indexOf(letter) === -1
+          prevState.green.indexOf(letter) < 0
             ? prevState.green.concat(letter)
             : prevState.green,
         yellow: prevState.yellow,
         grey: prevState.grey,
       }));
-    } else if (ans.includes(letter)) {
+    } else if (strCoords.includes(letter)) {
       console.log("yellow");
       setAllGuess((prevState) => ({
         green: prevState.green,
         yellow:
-          prevState.yellow.indexOf(letter) === -1
+          prevState.yellow.indexOf(letter) < 0
             ? prevState.yellow.concat(letter)
             : prevState.yellow,
         grey: prevState.grey,
@@ -113,7 +175,7 @@ export function GuessProvider({ children }) {
         green: prevState.green,
         yellow: prevState.yellow,
         grey:
-          prevState.grey.indexOf(letter) === -1
+          prevState.grey.indexOf(letter) < 0
             ? prevState.grey.concat(letter)
             : prevState.grey,
       }));
@@ -122,57 +184,17 @@ export function GuessProvider({ children }) {
     // console.log("allGuess in context: ", allGuess);
   }
 
-  // updateAns();
-
   return (
-    <AnswerContext.Provider value={ans}>
-      <GuessIndexContext.Provider value={guessIndex}>
-        <GuessIndexUpdateContext.Provider value={updateGuessIndex}>
-          <RowIndexContext.Provider value={rowIndex}>
-            <RowIndexUpdateContext.Provider value={updateRowIndex}>
-              <CurrGuessContext.Provider value={currGuess}>
-                <CurrGuessUpdateContext.Provider value={updateCurrGuess}>
-                  <AllGuessContext.Provider value={allGuess}>
-                    <AllGuessUpdateContext.Provider value={updateAllGuess}>
-                      {children}
-                    </AllGuessUpdateContext.Provider>
-                  </AllGuessContext.Provider>
-                </CurrGuessUpdateContext.Provider>
-              </CurrGuessContext.Provider>
-            </RowIndexUpdateContext.Provider>
-          </RowIndexContext.Provider>
-        </GuessIndexUpdateContext.Provider>
-      </GuessIndexContext.Provider>
-    </AnswerContext.Provider>
+    <HasSolvedContext.Provider value={hasSolved}>
+      <HasSolvedUpdateContext.Provider value={setHasSolved}>
+        <AnswerContext.Provider value={ans}>
+          <AllGuessContext.Provider value={allGuess}>
+            <AllGuessUpdateContext.Provider value={updateAllGuess}>
+              {children}
+            </AllGuessUpdateContext.Provider>
+          </AllGuessContext.Provider>
+        </AnswerContext.Provider>
+      </HasSolvedUpdateContext.Provider>
+    </HasSolvedContext.Provider>
   );
 }
-
-// function updateAllGuess(word) {
-//   [...word].forEach((letter) => {
-//     if (!ans.includes(letter) && allGuess.grey.concat(letter) === -1) {
-//       this.setAllGuess((prevState) => ({
-//         green: [...prevState.green],
-//         yellow: [...prevState.yellow],
-//         grey: allGuess.grey.concat(letter),
-//       }));
-//     } else if (
-//       ans.indexOf(letter) === word.indexOf(letter) &&
-//       allGuess.green.indexOf(letter) === -1
-//     ) {
-//       this.setAllGuess((prevState) => ({
-//         green: allGuess.green.concat(letter),
-//         yellow: [...prevState.yellow],
-//         grey: [...prevState.grey],
-//       }));
-//       // allGuess.green.concat(letter);
-//     } else if (!allGuess.green.includes(letter) && ans.includes(letter)) {
-//       this.setAllGuess((prevState) => ({
-//         green: [...prevState.yellow],
-//         yellow: allGuess.yellow.concat(letter),
-//         grey: [...prevState.grey],
-//       }));
-//       // allGuess.yellow.concat(letter);
-//     }
-//   });
-//   console.log("allGuess in context: ", allGuess);
-// }

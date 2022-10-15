@@ -1,52 +1,29 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import "../style/Geo.css";
 
-import { useAnswer } from "../utils/Context";
+import { useHasSolvedContext, useAnswer } from "../utils/Context";
 
 import MAPS_API_KEY from "../utils/keys";
 
 const containerStyle = {
-  width: "350px",
+  width: "450px",
   height: "250px",
 };
 
-// const center = {
-//   lat: 42.035773,
-//   lng: -97.62444,
-// };
-// const zoom = 18;
-
 export default function Map() {
-  const ans = useAnswer();
+  const ansData = useAnswer();
+  const hasSolved = useHasSolvedContext();
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "MAPS_API_KEY",
   });
 
   const [map, setMap] = React.useState(null);
-  const [center, setCenter] = React.useState({ lat: 0, lng: 0 });
-
-  // const processAns = () => {
-  //   const lat = parseFloat(ans.substring(0, 4)) / 10.0;
-  //   const lng = parseFloat(ans.substring(4, 12)) / 10.0;
-  //   console.log("center", { lat: lat, lng: lng });
-  //   return { lat: lat, lng: lng };
-  // };
-  // const center = processAns();
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/users")
-  //     .then((response) => response.json())
-  //     .then((res) => {
-  //       if (res && res.data) {
-  //         console.log("fetched");
-  //         const latt = Math.round(res.data[0]["lat"] * 10) / 10;
-  //         const lngt = Math.round(res.data[0]["lng"] * 10) / 10;
-  //         setCenter({ lat: latt, lng: lngt });
-  //       }
-  //     });
-  // }, []);
+  const [center, setCenter] = React.useState({
+    lat: ansData ? ansData.lat : null,
+    lng: ansData ? ansData.lng : null,
+  });
 
   const zoom = 18;
 
@@ -60,7 +37,7 @@ export default function Map() {
     setMap(null);
   }, []);
 
-  const hasSolved = false;
+  console.log("map");
 
   return isLoaded ? ( //false
     <div className="mapHolder">
@@ -74,7 +51,7 @@ export default function Map() {
           mapTypeControl: false,
           scaleControl: true,
           restriction: hasSolved
-            ? {}
+            ? null
             : {
                 latLngBounds: {
                   north: center.lat + 0.03,
