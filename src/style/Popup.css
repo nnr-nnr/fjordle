@@ -5,20 +5,17 @@
   height: 100vh;
   top: 0;
   left: 0;
-
-  /* filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.27));
-  -webkit-filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.27)); */
 }
 
 .content-box {
   position: relative;
-  max-width: 450px;
+  max-width: 550px;
   width: 50%;
-  min-width: 250px;
+  min-width: 470px;
   margin: 0 auto;
   height: auto;
-  max-height: 60vh;
-  margin-top: 10vh;
+  max-height: 85vh;
+  margin-top: 5vh;
   background: #fff;
   border-radius: 8px;
   padding: 18px;
@@ -27,17 +24,43 @@
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.267);
 }
 
+.content-box.solve {
+  margin-top: 15%;
+}
+
 .email-box > button {
   cursor: pointer;
   position: absolute;
   display: flex;
-  right: 4%;
-  top: 2%;
+  right: 10px;
+  top: 10px;
   width: 25px;
   height: 25px;
 }
 
-h4 {
+h3 {
+  text-align: center;
+  display: inline;
+  position: relative;
+  left: 100px;
+}
+
+h4.endtext {
+  text-align: center;
+}
+
+.subtitle-holder {
+  width: calc(100% - 70px);
+  position: relative;
+  top: -35px;
+  right: -35px;
+  border-bottom: none !important;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.5rem;
   text-align: center;
 }
 
@@ -49,7 +72,66 @@ h4 {
   border-bottom: 1pt lightgray solid;
 }
 
-/* 
-.solve-popup.just-solved {
-  display:
-} */
+.content-box > * {
+  /* border: hotpink 1pt solid; */
+}
+
+.example-grid-holder {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  box-sizing: border-box;
+}
+
+.example-grid-row {
+  width: calc(45 * 5 * 2px);
+  height: 45px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.25fr 1fr 0.5fr 1fr 1fr 1fr 1fr 0.25fr 1fr; /* repeat(11, 1fr); */
+  grid-template-rows: 1fr;
+  box-sizing: border-box;
+}
+
+.example-grid-cell {
+  background-color: white;
+  border: 2px gray solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  color: black;
+}
+.example-grid-cell.comma {
+  border: none;
+  color: grey;
+}
+
+.example-grid-cell.decimal {
+  border: none;
+  color: grey;
+}
+
+.example-grid-cell.green {
+  background-color: rgb(121, 167, 107);
+  border: none;
+  color: white;
+}
+.example-grid-cell.yellow {
+  background-color: rgb(198, 179, 102);
+  border: none;
+  color: white;
+}
+.example-grid-cell.grey {
+  background-color: rgb(121, 121, 126);
+  border: none;
+  color: white;
+}
+
+.example-grid-cell > span {
+  font-size: 1rem;
+}
+
+p {
+  font-size: 0.85rem;
+}

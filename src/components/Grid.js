@@ -22,7 +22,7 @@ export function useRowIndexUpdate() {
   return useContext(RowIndexUpdateContext);
 }
 
-export default function Grid({ addAttempt }) {
+export default function Grid({ addAttempt, numRows = 5 }) {
   // GUESS INDEX
   const [guessIndex, setGuessIndex] = useState(0);
   function updateGuessIndex(i) {
@@ -35,7 +35,7 @@ export default function Grid({ addAttempt }) {
     setRowIndex(i);
   }
 
-  const rows = [...Array(5).keys()].map((i) => (
+  const rows = [...Array(numRows).keys()].map((i) => (
     <Row rowNum={i} key={i} addAttempt={addAttempt} />
   ));
   return (

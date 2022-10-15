@@ -31,11 +31,13 @@ export default function SolvePopup({ handleClose, numAttempts }) {
   const loc = formatLocation(ansData);
   return (
     <div className="popup-box">
-      <div className="content-box">
+      <div className="content-box solve">
         <button type="button" onClick={handleClose}>
           <i className="fa fa-times" aria-hidden="true"></i>
         </button>
-        <h4>SOLVE POPUP</h4>
+        <div className="subtitle-holder">
+          <span className="subtitle">SOLVE POPUP</span>
+        </div>
         <div className="stats">
           <p>{solveStatusMsg(solveStatus, numAttempts)}</p>
         </div>
@@ -50,7 +52,7 @@ export default function SolvePopup({ handleClose, numAttempts }) {
           <h5>Share results</h5>
           <p> </p>
         </div> */}
-        <h4>
+        <h4 className="endtext">
           Come back again tomorrow!{" "}
           {["🌎", "🌍", "🌏", "🗺"][Math.floor(Math.random() * 4)]}
         </h4>
