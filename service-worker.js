@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/fjordle/precache-manifest.7f18a3f5305be46e1ef6bcf91766031b.js"
+  "/fjordle/precache-manifest.75f146e391c1f6e5d35d7229696083ef.js"
 );
 
 workbox.clientsClaim();
