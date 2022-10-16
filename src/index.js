@@ -7,11 +7,10 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    {/* // <React.StrictMode> */}
     <App />
   </>
-  // {/* </React.StrictMode> */}
 );
+// removed <React.StrictMode></React.StrictMode> from around <App/>
 // STRICT MODE MESSED UP GLOBE POINTS RENDERING (??!!)
 
 // const root2 = ReactDOM.createRoot(document.getElementById("globeView"));
