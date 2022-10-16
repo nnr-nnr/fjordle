@@ -2,17 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../style/Grid.css";
 
 import {
-  // useGuessIndex,
-  // useGuessIndexUpdate,
-  // useCurrGuess,
-  // useCurrGuessUpdate,
   useAnswer,
-  // useAllGuess,
   useAllGuessUpdate,
   useHasSolvedContext,
   useHasSolvedUpdateContext,
-  // useRowIndex,
-  // useRowIndexUpdate,
 } from "../utils/Context";
 
 import {
@@ -27,6 +20,7 @@ import { useCurrGuess, useCurrGuessUpdate } from "../components/Row";
 export default function Cell({
   id,
   decimalIndex,
+  invalidGuess,
   toggleInvalidGuess,
   rowNum,
   addAttempt,
@@ -156,18 +150,18 @@ export default function Cell({
           });
           addAttempt(currGuess);
           if (currGuess === ans) {
-            console.log("solved");
+            // console.log("solved");
             setHasSolved(1);
           } else {
             if (id >= 59) {
               setHasSolved(2);
             }
-            console.log("not solved");
+            // console.log("not solved");
           }
           updateCurrGuess("");
         } else {
-          console.log("INVALID");
-          toggleInvalidGuess(true);
+          // console.log("INVALID");
+          invalidGuess ? toggleInvalidGuess(false) : toggleInvalidGuess(true);
         }
       }
       // console.log("id", id);

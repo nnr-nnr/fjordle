@@ -7,6 +7,7 @@ const EgGrid = ({ example, exInd, color }) => {
       className={`example-grid-cell ${i === 3 || i === 10 ? "decimal" : ""} ${
         i === 5 ? "comma" : ""
       } ${i === exInd ? color : ""}`}
+      key={i}
     >
       <span>{example[i]}</span>
     </div>
@@ -19,10 +20,7 @@ const EgGrid = ({ example, exInd, color }) => {
 };
 
 export default function Popup({ handleClose }) {
-  console.log("Popup");
-  // const rows = [...Array(1).keys()].map((i) => (
-  //   <div className="example-grid-row"></div>
-  // ));
+  // console.log("Popup");
   return (
     <div className="popup-box">
       <div className="content-box">

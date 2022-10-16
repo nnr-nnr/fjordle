@@ -72,9 +72,9 @@ h4.endtext {
   border-bottom: 1pt lightgray solid;
 }
 
-.content-box > * {
-  /* border: hotpink 1pt solid; */
-}
+/* .content-box > * {
+  border: hotpink 1pt solid;
+} */
 
 .example-grid-holder {
   display: grid;

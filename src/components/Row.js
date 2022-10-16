@@ -27,12 +27,23 @@ export default function Row({ rowNum, addAttempt }) {
   }
   const [invalidGuess, toggleInvalidGuess] = useState(false);
 
+  // function invalidator() {
+  //   document.querySelector(`.row.${rowNum}`).className = "row";
+  //   requestAnimationFrame((time) => {
+  //     requestAnimationFrame((time) => {
+  //       document.querySelector(
+  //         `.row.${rowNum}`
+  //       ).className = `row ${rowNum} invalid`;
+  //     });
+  //   });
+  // }
   const cells = [...Array(12).keys()].map((i) => (
     <Cell
       id={i + rowNum * 12}
       decimalIndex={i > 10 ? i - 3 : i > 5 ? i - 2 : i > 3 ? i - 1 : i}
       key={i}
       rowNum={rowNum}
+      invalidGuess={invalidGuess}
       toggleInvalidGuess={toggleInvalidGuess}
       addAttempt={addAttempt}
     />
@@ -44,7 +55,7 @@ export default function Row({ rowNum, addAttempt }) {
           {/* check for hassolved */}
           <div
             className={`row ${invalidGuess ? " invalid " : ""} ${
-              hasSolved && rowIndex === rowNum + 1 ? "solved-row" : ""
+              hasSolved === 1 && rowIndex === rowNum + 1 ? "solved-row" : ""
             } `}
           >
             {cells}

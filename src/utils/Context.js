@@ -2,26 +2,6 @@ import React, { useContext, useState } from "react";
 
 import { coordValues } from "../utils/Values";
 
-// // GUESS INDEX
-// const GuessIndexContext = React.createContext();
-// const GuessIndexUpdateContext = React.createContext();
-// export function useGuessIndex() {
-//   return useContext(GuessIndexContext);
-// }
-// export function useGuessIndexUpdate() {
-//   return useContext(GuessIndexUpdateContext);
-// }
-
-// // CURR GUESSS
-// const CurrGuessContext = React.createContext();
-// const CurrGuessUpdateContext = React.createContext();
-// export function useCurrGuess() {
-//   return useContext(CurrGuessContext);
-// }
-// export function useCurrGuessUpdate() {
-//   return useContext(CurrGuessUpdateContext);
-// }
-
 // HAS SOLVED
 const HasSolvedContext = React.createContext();
 const HasSolvedUpdateContext = React.createContext();
@@ -45,16 +25,6 @@ export function useAllGuess() {
 export function useAllGuessUpdate() {
   return useContext(AllGuessUpdateContext);
 }
-
-// // ROW INDEX
-// const RowIndexContext = React.createContext();
-// const RowIndexUpdateContext = React.createContext();
-// export function useRowIndex() {
-//   return useContext(RowIndexContext);
-// }
-// export function useRowIndexUpdate() {
-//   return useContext(RowIndexUpdateContext);
-// }
 
 // ANS
 const AnswerContext = React.createContext();
@@ -95,7 +65,7 @@ const strAnswer = (lat, lng) => {
   let latStr = preFixCoordStrs(lat, false);
   let lngStr = preFixCoordStrs(lng, true);
   const ans = latStr.concat(lngStr);
-  console.log("lat, lng ans:", ans);
+  console.log(ans);
   return ans;
 };
 
@@ -110,32 +80,11 @@ const todayCoords = () => {
 };
 
 export function GuessProvider({ children }) {
-  // // GUESS INDEX
-  // const [guessIndex, setGuessIndex] = useState(0); // MOVE TO GRID PROPERTY
-  // function updateGuessIndex(i) {
-  //   setGuessIndex(i);
-  // }
-
-  // // CURR GUESSS
-  // const [currGuess, setCurrGuess] = useState(""); // MOVE TO ROW (?)
-  // function updateCurrGuess(i) {
-  //   setCurrGuess(i);
-  // }
-
   // ALL GUESSES
   const [allGuess, setAllGuess] = useState({ green: [], yellow: [], grey: [] }); //check where this is used
 
   // HAS SOLVED
   const [hasSolved, setHasSolved] = useState(0);
-  // const toggleSolved = () => {
-  //   setHasSolved(!hasSolved);
-  // };
-
-  // // ROW INDEX
-  // const [rowIndex, setRowIndex] = useState(0); //MOVE TO GRID PROPERTY
-  // function updateRowIndex(i) {
-  //   setRowIndex(i);
-  // }
 
   // ANS
   const ans = todayCoords(); //useState("+192-1732");
@@ -150,7 +99,7 @@ export function GuessProvider({ children }) {
 
     const strCoords = ans.strCoords;
     if (strCoords[index] === letter) {
-      console.log("green");
+      // console.log("green");
       setAllGuess((prevState) => ({
         green:
           prevState.green.indexOf(letter) < 0
@@ -160,7 +109,7 @@ export function GuessProvider({ children }) {
         grey: prevState.grey,
       }));
     } else if (strCoords.includes(letter)) {
-      console.log("yellow");
+      // console.log("yellow");
       setAllGuess((prevState) => ({
         green: prevState.green,
         yellow:
@@ -170,7 +119,7 @@ export function GuessProvider({ children }) {
         grey: prevState.grey,
       }));
     } else {
-      console.log("grey");
+      // console.log("grey");
       setAllGuess((prevState) => ({
         green: prevState.green,
         yellow: prevState.yellow,

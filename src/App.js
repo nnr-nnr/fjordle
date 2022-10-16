@@ -6,10 +6,9 @@ import Map from "./components/Map";
 import { GuessProvider } from "./utils/Context";
 import MyGlobe from "./components/Globe";
 import Navbar from "./components/Navbar";
+require("dotenv").config();
 
 function App() {
-  // const root = ReactDOM.createRoot(document.getElementById("root")); //getElementById("root")
-  // root.render(
   const [attempts, setAttempts] = useState([]);
   const addAttempt = (strCoords) => {
     setAttempts(attempts.concat(strCoords));

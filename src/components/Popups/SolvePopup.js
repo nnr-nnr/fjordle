@@ -36,7 +36,7 @@ export default function SolvePopup({ handleClose, numAttempts }) {
           <i className="fa fa-times" aria-hidden="true"></i>
         </button>
         <div className="subtitle-holder">
-          <span className="subtitle">SOLVE POPUP</span>
+          <span className="subtitle">SUMMARY</span>
         </div>
         <div className="stats">
           <p>{solveStatusMsg(solveStatus, numAttempts)}</p>

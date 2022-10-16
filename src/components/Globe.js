@@ -3,7 +3,6 @@ import Globe from "react-globe.gl";
 import "../style/Geo.css";
 import { useIsMobile } from "../utils/hooks";
 import { useAnswer } from "../utils/Context";
-// import * as ReactDOM from "react-dom/client";
 
 const numerifyCoords = (strCoords, index, ansCoords) => {
   const lat = parseFloat(strCoords.substring(0, 4)) / 10;
@@ -22,18 +21,20 @@ export default function MyGlobe({ attempts }) {
   const [markers, setMarkers] = useState([]);
 
   const ansCoords = useAnswer().strCoords;
+  const guess = attempts[attempts.length - 1];
   const isMobile = useIsMobile();
   useEffect(() => {
     if (attempts.length > 0) {
-      const newCoord = numerifyCoords(
-        attempts[attempts.length - 1],
-        attempts.length,
-        ansCoords
-      );
-      setMarkers(markers.concat(newCoord));
+      const newCoord = numerifyCoords(guess, attempts.length, ansCoords);
+      // add actual coord
+      if (attempts.length === 5 && ansCoords !== guess) {
+        const answerCoord = numerifyCoords(ansCoords, -1, ansCoords);
+        setMarkers(markers.concat(newCoord, answerCoord));
+      } else {
+        setMarkers(markers.concat(newCoord));
+      }
     }
   }, [attempts]);
-  // console.log("attempts", attempts);
   return (
     <div className={`globeHolder ${isMobile ? "mobile" : ""}`}>
       <Globe
@@ -45,7 +46,9 @@ export default function MyGlobe({ attempts }) {
         height={200}
         width={200}
         pointLabel={(d) =>
-          ` <b>Attempt ${d["index"]}:</b> <br>(${d["lat"]}, ${d["lng"]})`
+          ` <b>${
+            d["index"] < 0 ? "Answer" : `Attempt ${d["index"]}`
+          }:</b> <br>(${d["lat"]}, ${d["lng"]})`
         }
       />
     </div>

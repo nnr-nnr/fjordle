@@ -4,28 +4,27 @@ import "../style/Geo.css";
 
 import { useHasSolvedContext, useAnswer } from "../utils/Context";
 
-import MAPS_API_KEY from "../utils/keys";
+// import MAPS_API_KEY from "../utils/keys";
 
 const containerStyle = {
   width: "450px",
   height: "250px",
 };
 
-export default function Map() {
+// SECOND MAP
+function Map() {
   const ansData = useAnswer();
   const hasSolved = useHasSolvedContext();
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "MAPS_API_KEY",
+    googleMapsApiKey: "process.env.MAPS_API_KEY",
   });
 
   const [map, setMap] = React.useState(null);
-  const [center, setCenter] = React.useState({
+  const center = {
     lat: ansData ? ansData.lat : null,
     lng: ansData ? ansData.lng : null,
-  });
-
-  const zoom = 18;
+  };
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
@@ -39,16 +38,16 @@ export default function Map() {
 
   console.log("map");
 
-  return isLoaded ? ( //false
+  return isLoaded ? (
     <div className="mapHolder">
       <GoogleMap
         mapContainerStyle={containerStyle}
         options={{
           center: center,
-          zoom: zoom,
+          zoom: 18,
           mapTypeId: "satellite",
           streetViewControl: false,
-          mapTypeControl: false,
+          mapTypeControl: hasSolved,
           scaleControl: true,
           restriction: hasSolved
             ? null
@@ -60,15 +59,17 @@ export default function Map() {
                   west: center.lng - 0.03,
                 },
               },
+          fullscreenControl: true,
         }}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
       >
-        <Marker
-          // onLoad={onLoad}
-          position={center}
-        />
+        <Marker position={center} />
       </GoogleMap>
     </div>
   ) : (
     <div className="mapHolder"></div>
   );
 }
+
+export default React.memo(Map);
