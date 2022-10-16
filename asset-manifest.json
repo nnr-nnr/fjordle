@@ -1,15 +1,15 @@
 {
-  "main.css": "/fjordle/static/css/main.fe08341c.chunk.css",
-  "main.js": "/fjordle/static/js/main.617a32d8.chunk.js",
-  "main.js.map": "/fjordle/static/js/main.617a32d8.chunk.js.map",
-  "runtime~main.js": "/fjordle/static/js/runtime~main.0911fbb2.js",
-  "runtime~main.js.map": "/fjordle/static/js/runtime~main.0911fbb2.js.map",
-  "static/js/2.ff9bc322.chunk.js": "/fjordle/static/js/2.ff9bc322.chunk.js",
-  "static/js/2.ff9bc322.chunk.js.map": "/fjordle/static/js/2.ff9bc322.chunk.js.map",
-  "static/js/3.1749d0fc.chunk.js": "/fjordle/static/js/3.1749d0fc.chunk.js",
-  "static/js/3.1749d0fc.chunk.js.map": "/fjordle/static/js/3.1749d0fc.chunk.js.map",
+  "main.css": "/fjordle/static/css/main.b6dc0e5d.chunk.css",
+  "main.js": "/fjordle/static/js/main.1b1e5d7e.chunk.js",
+  "main.js.map": "/fjordle/static/js/main.1b1e5d7e.chunk.js.map",
+  "runtime~main.js": "/fjordle/static/js/runtime~main.07df6b4f.js",
+  "runtime~main.js.map": "/fjordle/static/js/runtime~main.07df6b4f.js.map",
+  "static/js/2.a822fa5b.chunk.js": "/fjordle/static/js/2.a822fa5b.chunk.js",
+  "static/js/2.a822fa5b.chunk.js.map": "/fjordle/static/js/2.a822fa5b.chunk.js.map",
+  "static/js/3.79a04dbb.chunk.js": "/fjordle/static/js/3.79a04dbb.chunk.js",
+  "static/js/3.79a04dbb.chunk.js.map": "/fjordle/static/js/3.79a04dbb.chunk.js.map",
   "index.html": "/fjordle/index.html",
-  "precache-manifest.1494400160d440b44285212a68b077a1.js": "/fjordle/precache-manifest.1494400160d440b44285212a68b077a1.js",
+  "precache-manifest.7f18a3f5305be46e1ef6bcf91766031b.js": "/fjordle/precache-manifest.7f18a3f5305be46e1ef6bcf91766031b.js",
   "service-worker.js": "/fjordle/service-worker.js",
-  "static/css/main.fe08341c.chunk.css.map": "/fjordle/static/css/main.fe08341c.chunk.css.map"
+  "static/css/main.b6dc0e5d.chunk.css.map": "/fjordle/static/css/main.b6dc0e5d.chunk.css.map"
 }
