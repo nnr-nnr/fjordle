@@ -1,5 +1,6 @@
 import React from "react";
 import "../../style/Popup.css";
+import { useIsMobile } from "../../utils/hooks";
 
 const EgGrid = ({ example, exInd, color }) => {
   const cells = [...Array(12).keys()].map((i) => (
@@ -20,6 +21,7 @@ const EgGrid = ({ example, exInd, color }) => {
 };
 
 export default function Popup({ handleClose }) {
+  const isMobile = useIsMobile();
   // console.log("Popup");
   return (
     <div className="popup-box">
@@ -43,8 +45,11 @@ export default function Popup({ handleClose }) {
 
           <p>
             After each guess, the color of the tiles will change to indicate how
-            close your guess was to the coordinate. Your guess will also be
-            displayed on the globe on the right.
+            close your guess was to the coordinate.{" "}
+            {!isMobile
+              ? `Your guess will also be
+            displayed on the globe on the right.`
+              : ``}
           </p>
         </div>
 
@@ -55,17 +60,17 @@ export default function Popup({ handleClose }) {
             The number <b>9</b> is in the coordinate pair and in the correct
             spot.
           </p>
-          <br></br>
+          {isMobile ? `` : <br></br>}
           <EgGrid example={"-19.2,-061.1"} exInd={8} color={"yellow"} />
           <p>
             The number <b>6</b> is in the coordinate pair but in the wrong spot.
           </p>
-          <br></br>
+          {isMobile ? `` : <br></br>}
           <EgGrid example={"+52.1,+130.8"} exInd={1} color={"grey"} />
           <p>
             The number <b>5</b> is not in the coordinate pair in any spot.
           </p>
-          <br></br>
+          {isMobile ? `` : <br></br>}
         </div>
 
         <div className="contact">

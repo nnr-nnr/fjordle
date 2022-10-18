@@ -29,6 +29,7 @@ export default function SolvePopup({ handleClose, numAttempts }) {
   const ansData = useAnswer();
   const solveStatus = useHasSolvedContext();
   const loc = formatLocation(ansData);
+
   return (
     <div className="popup-box">
       <div className="content-box solve">

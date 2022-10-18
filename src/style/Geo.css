@@ -21,3 +21,10 @@
 
   /* margin-bottom: 30vh; */
 }
+
+@media only screen and (max-width: 900px) {
+  .mapHolder {
+    width: 70vw;
+    height: 20vh;
+  }
+}

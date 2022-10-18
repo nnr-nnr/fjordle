@@ -1,23 +1,23 @@
 import React from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import "../style/Geo.css";
-
+import { useIsMobile } from "../utils/hooks";
 import { useHasSolvedContext, useAnswer } from "../utils/Context";
-
-// import MAPS_API_KEY from "../utils/keys";
-
-const containerStyle = {
-  width: "450px",
-  height: "250px",
-};
 
 // SECOND MAP
 function Map() {
   const ansData = useAnswer();
   const hasSolved = useHasSolvedContext();
+  const isMobile = useIsMobile();
+
+  const containerStyle = {
+    width: isMobile ? "70vw" : "450px",
+    height: isMobile ? "20vh" : "250px",
+  };
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "process.env.MAPS_API_KEY",
+    googleMapsApiKey: "key", //"AIzaSyDqrLUshWONucwmxnaAxJaKlR5g3Hhr9zI", //process.env.MAPS_API_KEY,
   });
 
   const [map, setMap] = React.useState(null);

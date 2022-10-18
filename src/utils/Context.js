@@ -73,7 +73,7 @@ const todayCoords = () => {
   const start = new Date("October 10, 2022 00:00:00").getTime();
   const now = Date.now();
   const nDays = Math.floor((now - start) / (60 * 60 * 1000 * 24));
-  const data = coordValues[coordValues.length % nDays];
+  const data = coordValues[nDays % coordValues.length];
   data.strCoords = strAnswer(data.lat, data.lng);
   // console.log("ans", data);
   return data;

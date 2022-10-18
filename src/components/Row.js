@@ -1,10 +1,8 @@
 import React, { useState, useContext } from "react";
 import "../style/Grid.css";
-// import { useRowIndex } from "../utils/Context";
 import Cell from "./Cell";
 
 import { useHasSolvedContext } from "../utils/Context";
-
 import { useRowIndex } from "../components/Grid";
 
 // CURR GUESSS
@@ -17,26 +15,19 @@ export function useCurrGuessUpdate() {
   return useContext(CurrGuessUpdateContext);
 }
 
-export default function Row({ rowNum, addAttempt }) {
+export default function Row({ rowNum, addAttempt, attempts }) {
   const hasSolved = useHasSolvedContext();
   const rowIndex = useRowIndex();
+  const [invalidGuess, toggleInvalidGuess] = useState(false);
+
+  console.log("row ");
+
   // CURR GUESSS
   const [currGuess, setCurrGuess] = useState("");
   function updateCurrGuess(i) {
     setCurrGuess(i);
   }
-  const [invalidGuess, toggleInvalidGuess] = useState(false);
 
-  // function invalidator() {
-  //   document.querySelector(`.row.${rowNum}`).className = "row";
-  //   requestAnimationFrame((time) => {
-  //     requestAnimationFrame((time) => {
-  //       document.querySelector(
-  //         `.row.${rowNum}`
-  //       ).className = `row ${rowNum} invalid`;
-  //     });
-  //   });
-  // }
   const cells = [...Array(12).keys()].map((i) => (
     <Cell
       id={i + rowNum * 12}
@@ -46,13 +37,15 @@ export default function Row({ rowNum, addAttempt }) {
       invalidGuess={invalidGuess}
       toggleInvalidGuess={toggleInvalidGuess}
       addAttempt={addAttempt}
+      currGuess={currGuess}
+      updateCurrGuess={updateCurrGuess}
     />
   ));
+
   return (
     <CurrGuessContext.Provider value={currGuess}>
       <CurrGuessUpdateContext.Provider value={updateCurrGuess}>
         <div>
-          {/* check for hassolved */}
           <div
             className={`row ${invalidGuess ? " invalid " : ""} ${
               hasSolved === 1 && rowIndex === rowNum + 1 ? "solved-row" : ""
@@ -65,25 +58,3 @@ export default function Row({ rowNum, addAttempt }) {
     </CurrGuessContext.Provider>
   );
 }
-
-// rowNum,
-// currGuess,
-// updateCurrGuess,
-// guessIndex,
-// setGuessIndex,
-// rowIndex,
-// setRowIndex,
-
-// <Cell
-//   id={i + rowNum * 12}
-//   decimalIndex={i > 10 ? i - 3 : i > 5 ? i - 2 : i > 3 ? i - 1 : i}
-//   key={i}
-//   rowNum={rowNum}
-//   toggleInvalidGuess={toggleInvalidGuess}
-//   currGuess={currGuess}
-//   updateCurrGuess={updateCurrGuess}
-//   guessIndex={guessIndex}
-//   setGuessIndex={setGuessIndex}
-//   rowIndex={rowIndex}
-//   setRowIndex={setRowIndex}
-// />

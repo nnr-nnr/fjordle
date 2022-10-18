@@ -13,8 +13,6 @@
 }
 
 .gridHolder {
-  /* width: calc(350 * 2px);
-  height: 350px; */
   padding: 10px;
 
   display: grid;
@@ -30,8 +28,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 0.25fr 1fr 0.5fr 1fr 1fr 1fr 1fr 0.25fr 1fr; /* repeat(11, 1fr); */
   grid-template-rows: 1fr;
-  /* column-gap: 3px;
-    row-gap: 3px; */
   box-sizing: border-box;
 }
 
@@ -192,6 +188,10 @@ span {
   animation-iteration-count: 4;
 }
 
+/* *********** */
+/* ANIMATIONS */
+/* *********** */
+
 @keyframes tileGuess {
   50% {
     margin: 0px;
@@ -251,5 +251,22 @@ span {
     border-color: var(--border-color);
     background-color: var(--background-color);
     color: white;
+  }
+}
+
+/* *********** */
+/* MOBILE */
+/* *********** */
+
+@media only screen and (max-width: 900px) {
+  .row {
+    width: calc(33 * 5 * 2px);
+    height: 33px;
+  }
+
+  span {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: capitalize;
   }
 }

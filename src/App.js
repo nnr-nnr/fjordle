@@ -22,7 +22,7 @@ function App() {
           <MyGlobe attempts={attempts} />
 
           <Map />
-          <Grid addAttempt={addAttempt} />
+          <Grid addAttempt={addAttempt} attempts={attempts} />
 
           <Keyboard />
         </div>

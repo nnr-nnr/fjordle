@@ -28,16 +28,6 @@
   margin-top: 15%;
 }
 
-.email-box > button {
-  cursor: pointer;
-  position: absolute;
-  display: flex;
-  right: 10px;
-  top: 10px;
-  width: 25px;
-  height: 25px;
-}
-
 h3 {
   text-align: center;
   display: inline;
@@ -62,10 +52,6 @@ h4.endtext {
   font-family: "Roboto Slab", serif;
   font-size: 1.5rem;
   text-align: center;
-}
-
-.email-box > div > p {
-  font-size: 14px;
 }
 
 .content-box > div {
@@ -134,4 +120,39 @@ h4.endtext {
 
 p {
   font-size: 0.85rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .content-box {
+    position: relative;
+    max-width: 90vw;
+    width: 75%;
+    min-width: 80vw;
+    margin: 0 auto;
+    height: auto;
+    max-height: 85vh;
+    margin-top: 5vh;
+    background: #fff;
+    border-radius: 8px;
+    padding: 18px;
+    overflow: auto;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.267);
+  }
+  .example-grid-row {
+    width: calc(26 * 5 * 2px);
+    height: 26px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 0.25fr 1fr 0.5fr 1fr 1fr 1fr 1fr 0.25fr 1fr; /* repeat(11, 1fr); */
+    grid-template-rows: 1fr;
+    box-sizing: border-box;
+  }
+  .example-grid-cell > span {
+    font-size: 0.8rem;
+  }
+
+  h4.endtext {
+    font-size: 0.8rem;
+  }
 }

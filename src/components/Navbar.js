@@ -5,6 +5,7 @@ import Popup from "./Popups/InfoPopup";
 import { useHasSolvedContext } from "../utils/Context";
 
 export default function Navbar({ attemptsLen }) {
+  // console.log("navbar");
   const hasSolved = useHasSolvedContext();
   const [infoIsOpen, setInfoIsOpen] = useState(false);
   const [solveIsOpen, setSolveIsOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function Navbar({ attemptsLen }) {
           <button
             type="button"
             title="Revealed on game end"
-            onClick={toggleSolvePopup}
+            onClick={hasSolved ? toggleSolvePopup : null}
           >
             <i
               className={`fa fa-check-circle ${hasSolved ? "revealed" : ""}`}

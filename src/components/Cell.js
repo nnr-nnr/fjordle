@@ -24,13 +24,14 @@ export default function Cell({
   toggleInvalidGuess,
   rowNum,
   addAttempt,
+  // currGuess, // if props drilled instead of context
+  // updateCurrGuess,
 }) {
   const hasSolved = useHasSolvedContext();
   const setHasSolved = useHasSolvedUpdateContext();
   const currGuess = useCurrGuess();
   const updateCurrGuess = useCurrGuessUpdate();
   const updateAllGuess = useAllGuessUpdate();
-  // const allGuesses = useAllGuess();
   const guessIndex = useGuessIndex();
   const updateGuessIndex = useGuessIndexUpdate();
   const ansData = useAnswer();
@@ -61,6 +62,14 @@ export default function Cell({
     isDecimalCell() ? "." : isComma() ? "," : isSignedCell() ? "+/-" : ""
   );
 
+  const [tempClasses, setTempClasses] = useState("");
+
+  useEffect(() => {
+    if (rowNum === currRowIndex - 1) {
+      setTempClasses(checkGuess());
+    }
+  }, [currRowIndex]);
+
   const isValidGuess = () => {
     const latGuess = parseFloat(currGuess.substring(0, 4)) / 10.0;
     const lngGuess = parseFloat(currGuess.substring(4, 12)) / 10.0;
@@ -72,27 +81,56 @@ export default function Cell({
     );
   };
 
+  const cellColor = () => {
+    const ansArr = ans.split("");
+    // console.log(ansArr);
+    // const tempArr = [];
+    // currGuess.split("").forEach((v, index) => {
+    //   if (ansArr[index] === v) {
+    //     ansArr[index] = "_";
+    //     tempArr.push("green");
+    //   } else if (ansArr.indexOf(v) < 0) {
+    //     tempArr.push("grey");
+    //   } else if (currGuess[ansArr.indexOf(v)] != v) {
+    //     // in ans at wrong spot AND available
+    //     ansArr[ansArr.indexOf(v)] = "_";
+    //     tempArr.push("yellow");
+    //   } else {
+    //     tempArr.push("grey");
+    //   }
+    // });
+
+    const tempArr = Array(9).fill(null);
+    currGuess.split("").forEach((v, index) => {
+      if (ansArr[index] === v) {
+        ansArr[index] = "_";
+        tempArr[index] = "green";
+      } else if (ansArr.indexOf(v) < 0) {
+        tempArr[index] = "grey";
+      }
+    });
+    currGuess.split("").forEach((v, index) => {
+      if (!tempArr[index]) {
+        if (ansArr.indexOf(v) < 0) {
+          tempArr[index] = "grey";
+        } else {
+          ansArr[ansArr.indexOf(v)] = "_";
+          tempArr[index] = "yellow";
+        }
+      }
+    });
+    return tempArr[decimalIndex];
+  };
+
   const checkGuess = () => {
     const classes = "Ind" + (id % 12).toString();
-    // console.log("\n\nans", ans);
-    // console.log("value", value);
-    // console.log("ans.indexOf(value)", ans.indexOf(value));
-    // console.log("id % 12", id % 12);
     if (!isDecimalCell() && !isComma()) {
       if (value === "") {
         return classes;
-      } else if (ans[decimalIndex] === value) {
-        return classes + " green";
-      } else if (ans.indexOf(value) > -1) {
-        return classes + " yellow";
       } else {
-        return classes + " grey";
+        return classes + " " + cellColor();
       }
     }
-  };
-
-  const flipped = () => {
-    return rowNum < currRowIndex;
   };
 
   useEffect(() => {
@@ -142,7 +180,7 @@ export default function Cell({
         }
       } else if (key === "Enter" && id % 12 === 11 && value !== "") {
         if (isValidGuess()) {
-          // console.log("Enter (valid)");
+          console.log("Enter (valid)");
           updatecurrRowIndex(currRowIndex + 1);
           updateGuessIndex(guessIndex + 1);
           [...currGuess].forEach((letter, index) => {
@@ -158,7 +196,7 @@ export default function Cell({
             }
             // console.log("not solved");
           }
-          updateCurrGuess("");
+          // updateCurrGuess("");
         } else {
           // console.log("INVALID");
           invalidGuess ? toggleInvalidGuess(false) : toggleInvalidGuess(true);
@@ -189,11 +227,11 @@ export default function Cell({
     <div
       className={`cell ${
         guessIndex === id && rowNum === currRowIndex ? "curr" : ""
-      } ${value !== "" && value !== "+/-" ? "guessed" : ""} ${
-        flipped() ? checkGuess() : ""
-      } ${isSignedCell() ? "signedCell" : ""} ${
-        isDecimalCell() ? "decimalCell" : ""
-      } ${isComma() ? "commaCell" : ""} `}
+      } ${value !== "" && value !== "+/-" ? "guessed" : ""} ${tempClasses} ${
+        isSignedCell() ? "signedCell" : ""
+      } ${isDecimalCell() ? "decimalCell" : ""} ${
+        isComma() ? "commaCell" : ""
+      } `}
     >
       <span>{isSignedCell() ? "+/-" : value}</span>
     </div>
