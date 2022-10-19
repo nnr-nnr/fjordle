@@ -59,12 +59,6 @@
     width: 25vw;
     margin: 4px;
   }
-  /* .big-key {
-    grid-area: b;
-  }
-  .value-key {
-    grid-area: a;
-  } */
 
   .kybrdRow {
     display: grid;
@@ -73,7 +67,6 @@
   .kybrdRowMobile {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* align-items: center; */
     justify-items: center;
   }
   .kybrdRowMobile > .kybrdKey {
