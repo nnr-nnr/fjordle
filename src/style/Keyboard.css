@@ -54,18 +54,30 @@
 
 @media only screen and (max-width: 900px) {
   .kybrdKey {
-    background-color: lightgrey;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    font-size: 0.75rem;
-    max-height: 7vh;
-    width: 20vw;
+    font-size: 0.85rem;
+    max-height: 6vh;
+    width: 25vw;
     margin: 4px;
   }
+  /* .big-key {
+    grid-area: b;
+  }
+  .value-key {
+    grid-area: a;
+  } */
 
   .kybrdRow {
     display: grid;
-
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .kybrdRowMobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* align-items: center; */
+    justify-items: center;
+  }
+  .kybrdRowMobile > .kybrdKey {
+    width: 37.75vw;
+    align-self: center;
   }
 }

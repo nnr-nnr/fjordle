@@ -20,7 +20,7 @@ export default function Row({ rowNum, addAttempt, attempts }) {
   const rowIndex = useRowIndex();
   const [invalidGuess, toggleInvalidGuess] = useState(false);
 
-  console.log("row ");
+  // console.log("row ");
 
   // CURR GUESSS
   const [currGuess, setCurrGuess] = useState("");

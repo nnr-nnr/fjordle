@@ -51,7 +51,6 @@ button {
 
 @media only screen and (max-width: 900px) {
   .App {
-    border: 2pt hotpink solid;
     height: 98vh;
   }
 }

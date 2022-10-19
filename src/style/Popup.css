@@ -155,4 +155,11 @@ p {
   h4.endtext {
     font-size: 0.8rem;
   }
+
+  .content-box.solve {
+    margin-top: 25%;
+  }
+  .subtitle {
+    font-size: 1.35rem;
+  }
 }

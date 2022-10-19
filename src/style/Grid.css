@@ -260,8 +260,8 @@ span {
 
 @media only screen and (max-width: 900px) {
   .row {
-    width: calc(33 * 5 * 2px);
-    height: 33px;
+    width: calc(35 * 5 * 2px);
+    height: 35px;
   }
 
   span {

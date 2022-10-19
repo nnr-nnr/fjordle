@@ -23,7 +23,7 @@ export default function Key({ letter, id }) {
           : guesses.grey.includes(letter)
           ? "grey"
           : ""
-      }`}
+      } ${id === "Enter" || id === "Backspace" ? "value-key" : "big-key"}`}
       type="button"
       key={letter}
       onClick={handlePress}
