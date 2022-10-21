@@ -38,15 +38,15 @@ const preFixCoordStrs = (coord, isLng) => {
   const len = isLng ? 5 : 4;
   if (absCoord < 1) {
     coordStrd = coordStrd
-      .concat("000", Math.round(absCoord * 10) / 10.0)
+      .concat(isLng ? "000" : "00", Math.round(absCoord * 10) / 10.0)
       .replace(".", "");
   } else if (absCoord < 10) {
     coordStrd = coordStrd
-      .concat("00", Math.round(absCoord * 10) / 10.0)
+      .concat(isLng ? "00" : "0", Math.round(absCoord * 10) / 10.0)
       .replace(".", "");
   } else if (isLng && absCoord < 100) {
     coordStrd = coordStrd
-      .concat("0", Math.round(absCoord * 10) / 10.0)
+      .concat(isLng ? "0" : "", Math.round(absCoord * 10) / 10.0)
       .replace(".", "");
   } else {
     coordStrd = coordStrd

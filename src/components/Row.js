@@ -15,7 +15,7 @@ export function useCurrGuessUpdate() {
   return useContext(CurrGuessUpdateContext);
 }
 
-export default function Row({ rowNum, addAttempt, attempts }) {
+function Row({ rowNum, addAttempt }) {
   const hasSolved = useHasSolvedContext();
   const rowIndex = useRowIndex();
   const [invalidGuess, toggleInvalidGuess] = useState(false);
@@ -58,3 +58,5 @@ export default function Row({ rowNum, addAttempt, attempts }) {
     </CurrGuessContext.Provider>
   );
 }
+
+export default React.memo(Row);

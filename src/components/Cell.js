@@ -180,7 +180,7 @@ export default function Cell({
         }
       } else if (key === "Enter" && id % 12 === 11 && value !== "") {
         if (isValidGuess()) {
-          console.log("Enter (valid)");
+          // console.log("Enter (valid)");
           updatecurrRowIndex(currRowIndex + 1);
           updateGuessIndex(guessIndex + 1);
           [...currGuess].forEach((letter, index) => {

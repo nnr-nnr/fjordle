@@ -37,7 +37,7 @@ export default function Grid({ addAttempt, numRows = 5, attempts }) {
   }
 
   const rows = [...Array(numRows).keys()].map((i) => (
-    <Row rowNum={i} key={i} addAttempt={addAttempt} attempts={attempts} />
+    <Row rowNum={i} key={i} addAttempt={addAttempt} />
   ));
   return (
     <GuessIndexContext.Provider value={guessIndex}>
