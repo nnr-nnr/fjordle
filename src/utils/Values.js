@@ -146,7 +146,7 @@ export const coordValues = [
   },
   {
     lat: 66.51091,
-    lng: 4.714,
+    lng: -115.66869,
     city: "Akaitcho Lake",
     prov: "Nunavut",
     state: "Canada",
