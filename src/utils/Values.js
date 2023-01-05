@@ -6,6 +6,7 @@ export const coordValues = [
     prov: "Kansas",
     state: "United States",
     name: "Meadow Lake Country Club",
+    continent: "North America",
     strCoords: "",
   },
   {
@@ -15,6 +16,7 @@ export const coordValues = [
     prov: "Canterbury",
     state: "New Zealand",
     name: "Leafield",
+    continent: "Oceania",
     strCoords: "",
   },
   {
@@ -24,6 +26,7 @@ export const coordValues = [
     prov: "Northern Ostrobothnia",
     state: "Finland",
     name: "Musta",
+    continent: "Europe",
     strCoords: "",
   },
   {
@@ -33,6 +36,7 @@ export const coordValues = [
     prov: "Montana",
     state: "United States",
     name: "North Fork Sage Hen Creek",
+    continent: "North America",
     strCoords: "",
   },
   {
@@ -42,6 +46,7 @@ export const coordValues = [
     prov: "Ömnögovĭ",
     state: "Mongolia",
     name: "",
+    continent: "Asia",
     strCoords: "",
   },
   {
@@ -51,6 +56,7 @@ export const coordValues = [
     prov: "",
     state: "Australia",
     name: "",
+    continent: "Oceania",
     strCoords: "",
   },
   {
@@ -60,6 +66,7 @@ export const coordValues = [
     prov: "Homs",
     state: "Syria",
     name: "ناحية القريتين (Al-Qaryatayn Subdistrict)",
+    continent: "Middle East",
     strCoords: "",
   },
   {
@@ -69,6 +76,7 @@ export const coordValues = [
     prov: "Sonora",
     state: "Mexico",
     name: "Cerro El Tullido",
+    continent: "North America",
     strCoords: "",
   },
   {
@@ -78,6 +86,7 @@ export const coordValues = [
     prov: "Kratie",
     state: "Cambodia",
     name: "Char Tnaol",
+    continent: "Asia",
     strCoords: "",
   },
   {
@@ -87,6 +96,7 @@ export const coordValues = [
     prov: "Karnataka",
     state: "India",
     name: "Bhairvadgi",
+    continent: "Asia",
     strCoords: "",
   },
   {
@@ -96,6 +106,7 @@ export const coordValues = [
     prov: "South Australia",
     state: "Australia",
     name: "Point Westall",
+    continent: "Oceania",
     strCoords: "",
   },
   {
@@ -105,6 +116,7 @@ export const coordValues = [
     prov: "Amazonas",
     state: "Brazil",
     name: "Fazenda Círculo Gaúcho",
+    continent: "South America",
     strCoords: "",
   },
 
@@ -115,6 +127,7 @@ export const coordValues = [
     prov: "Santa Cruz",
     state: "Bolivia",
     name: "Córrego Morro Branco",
+    continent: "South America",
     strCoords: "",
   },
   // {
@@ -133,6 +146,7 @@ export const coordValues = [
     prov: "Bahia",
     state: "Brazil",
     name: "Sangradouro",
+    continent: "South America",
     strCoords: "",
   },
   {
@@ -142,6 +156,7 @@ export const coordValues = [
     prov: "Alberta",
     state: "Canada",
     name: "",
+    continent: "North America",
     strCoords: "",
   },
   {
@@ -151,6 +166,7 @@ export const coordValues = [
     prov: "Nunavut",
     state: "Canada",
     name: "",
+    continent: "North America",
     strCoords: "",
   },
   {
@@ -160,6 +176,7 @@ export const coordValues = [
     prov: "California",
     state: "United States",
     name: "Rainbow Farms (historical)",
+    continent: "North America",
     strCoords: "",
   },
   {
@@ -169,6 +186,7 @@ export const coordValues = [
     prov: "Red Sea",
     state: "Sudan",
     name: "",
+    continent: "Africa",
     strCoords: "",
   },
   {
@@ -178,6 +196,7 @@ export const coordValues = [
     prov: "Oromiya",
     state: "Ethiopia",
     name: "",
+    continent: "Middle East",
     strCoords: "",
   },
   {
@@ -187,6 +206,7 @@ export const coordValues = [
     prov: "Soqatra",
     state: "Yemen",
     name: "",
+    continent: "Middle East",
     strCoords: "",
   },
   {
@@ -196,6 +216,7 @@ export const coordValues = [
     prov: "",
     state: "Turkmenistan",
     name: "Chagali",
+    continent: "Asia",
     strCoords: "",
   },
   {
@@ -205,6 +226,7 @@ export const coordValues = [
     prov: "Inuvik",
     state: "Canada",
     name: "",
+    continent: "North America",
     strCoords: "",
   },
   {
@@ -214,6 +236,7 @@ export const coordValues = [
     prov: "Buryatiya Republic",
     state: "Russia",
     name: "Alla",
+    continent: "Europe",
     strCoords: "",
   },
   {
@@ -223,6 +246,7 @@ export const coordValues = [
     prov: "Karaganda",
     state: "Kazakhstan",
     name: "Malaya Bukpa",
+    continent: "Asia",
     strCoords: "",
   },
   {
@@ -232,6 +256,7 @@ export const coordValues = [
     prov: "Arizona",
     state: "United States",
     name: "",
+    continent: "North America",
     strCoords: "",
   },
   {
@@ -241,6 +266,7 @@ export const coordValues = [
     prov: "Region of Magallanes",
     state: "Chile",
     name: "",
+    continent: "South America",
     strCoords: "",
   },
   {
@@ -250,6 +276,7 @@ export const coordValues = [
     prov: "Inhambane",
     state: "Mozambique",
     name: "Lago Nhachinhate",
+    continent: "Africa",
     strCoords: "",
   },
   {
@@ -259,6 +286,7 @@ export const coordValues = [
     prov: "",
     state: "Belgium",
     name: "",
+    continent: "Europe",
     strCoords: "",
   },
   {
@@ -268,6 +296,7 @@ export const coordValues = [
     prov: "Matabeleland North",
     state: "Zimbabwe",
     name: "",
+    continent: "Africa",
     strCoords: "",
   },
 ];

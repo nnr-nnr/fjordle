@@ -18,12 +18,10 @@ function App() {
       <GuessProvider>
         <div className="App">
           <Navbar attemptsLen={attempts.length} />
-
           <MyGlobe attempts={attempts} />
-
+          <div id="mapHolder"></div>
           <Map />
           <Grid addAttempt={addAttempt} attempts={attempts} />
-
           <Keyboard />
         </div>
       </GuessProvider>

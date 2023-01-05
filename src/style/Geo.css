@@ -13,17 +13,26 @@
   display: none;
 }
 
-.mapHolder {
+/* .mapHolder {
   border: grey 3pt solid !important;
   border-radius: 5px;
   width: 450px;
   height: 250px;
+} */
 
-  /* margin-bottom: 30vh; */
+#mapHolder {
+  border: grey 3pt solid !important;
+  border-radius: 5px;
+  width: 450px;
+  height: 250px;
 }
 
 @media only screen and (max-width: 900px) {
-  .mapHolder {
+  /* .mapHolder {
+    width: 70vw;
+    height: 20vh;
+  } */
+  #mapHolder {
     width: 70vw;
     height: 20vh;
   }

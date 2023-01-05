@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SolvePopup from "./Popups/SolvePopup";
 import Popup from "./Popups/InfoPopup";
 
@@ -7,7 +7,7 @@ import { useHasSolvedContext } from "../utils/Context";
 export default function Navbar({ attemptsLen }) {
   // console.log("navbar");
   const hasSolved = useHasSolvedContext();
-  const [infoIsOpen, setInfoIsOpen] = useState(false);
+  const [infoIsOpen, setInfoIsOpen] = useState(true); //useState(false);
   const [solveIsOpen, setSolveIsOpen] = useState(false);
   const toggleInfoPopup = () => {
     setInfoIsOpen(!infoIsOpen);
@@ -15,6 +15,12 @@ export default function Navbar({ attemptsLen }) {
   const toggleSolvePopup = () => {
     setSolveIsOpen(!solveIsOpen);
   };
+
+  // When fjordle first solved, Solve popup appears
+  useEffect(() => {
+    setSolveIsOpen(true);
+  }, [hasSolved]);
+
   return (
     <>
       <nav>

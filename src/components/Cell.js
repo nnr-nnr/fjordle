@@ -83,22 +83,6 @@ export default function Cell({
 
   const cellColor = () => {
     const ansArr = ans.split("");
-    // console.log(ansArr);
-    // const tempArr = [];
-    // currGuess.split("").forEach((v, index) => {
-    //   if (ansArr[index] === v) {
-    //     ansArr[index] = "_";
-    //     tempArr.push("green");
-    //   } else if (ansArr.indexOf(v) < 0) {
-    //     tempArr.push("grey");
-    //   } else if (currGuess[ansArr.indexOf(v)] != v) {
-    //     // in ans at wrong spot AND available
-    //     ansArr[ansArr.indexOf(v)] = "_";
-    //     tempArr.push("yellow");
-    //   } else {
-    //     tempArr.push("grey");
-    //   }
-    // });
 
     const tempArr = Array(9).fill(null);
     currGuess.split("").forEach((v, index) => {

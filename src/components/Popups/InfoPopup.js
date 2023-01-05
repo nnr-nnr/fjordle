@@ -40,7 +40,8 @@ export default function Popup({ handleClose }) {
 
           <p>
             Each guess must be a valid latitude-longitude coordinate in decimal
-            degree notation. Hit the enter button to submit.
+            degree notation, <b>including plus-minus (+/-) signage</b>. Hit the
+            enter button to submit.
           </p>
 
           <p>

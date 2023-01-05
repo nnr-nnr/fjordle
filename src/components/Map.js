@@ -1,75 +1,67 @@
 import React from "react";
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import "../style/Geo.css";
-import { useIsMobile } from "../utils/hooks";
 import { useHasSolvedContext, useAnswer } from "../utils/Context";
 
-// SECOND MAP
+import { Loader } from "@googlemaps/js-api-loader";
+
+// GOOGLE-supported node package
 function Map() {
   const ansData = useAnswer();
   const hasSolved = useHasSolvedContext();
-  const isMobile = useIsMobile();
 
-  const containerStyle = {
-    width: isMobile ? "70vw" : "450px",
-    height: isMobile ? "20vh" : "250px",
-  };
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: "key",
+  const loader = new Loader({
+    apiKey: process.env.MAPS_INFO, //"key",
+    version: "weekly",
+    libraries: ["places", "marker"],
   });
 
-  const [map, setMap] = React.useState(null);
   const center = {
     lat: ansData ? ansData.lat : null,
     lng: ansData ? ansData.lng : null,
   };
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
+  const mapOptions = {
+    center: center,
+    zoom: 18,
+    mapTypeId: "satellite",
+    streetViewControl: false,
+    mapTypeControl: hasSolved !== 0,
+    scaleControl: true,
+    restriction:
+      hasSolved !== 0
+        ? null
+        : {
+            latLngBounds: {
+              north: center.lat + 0.03,
+              south: center.lat - 0.03,
+              east: center.lng + 0.03,
+              west: center.lng - 0.03,
+            },
+          },
+    fullscreenControl: true,
+  };
 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
+  console.log("pssst!... today's coords are ", ansData.strCoords);
 
-  console.log("map");
-
-  return isLoaded ? (
-    <div className="mapHolder">
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        options={{
-          center: center,
-          zoom: 18,
-          mapTypeId: "satellite",
-          streetViewControl: false,
-          mapTypeControl: hasSolved,
-          scaleControl: true,
-          restriction: hasSolved
-            ? null
-            : {
-                latLngBounds: {
-                  north: center.lat + 0.03,
-                  south: center.lat - 0.03,
-                  east: center.lng + 0.03,
-                  west: center.lng - 0.03,
-                },
-              },
-          fullscreenControl: true,
-        }}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
-        <Marker position={center} />
-      </GoogleMap>
-    </div>
-  ) : (
-    <div className="mapHolder"></div>
-  );
+  // Promise
+  loader
+    .load()
+    .then((google) => {
+      // console.log("google", google);
+      const myMap = new google.maps.Map(
+        document.getElementById("mapHolder"),
+        mapOptions
+      );
+      // console.log("myMap", myMap);
+      new google.maps.Marker({
+        position: center,
+        map: myMap,
+      });
+    })
+    .catch((e) => {
+      console.log("ERROR:", e);
+    });
 }
 
+// prevent unnecessary reloads of map (and API calls)
 export default React.memo(Map);
