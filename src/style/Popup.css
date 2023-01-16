@@ -37,13 +37,13 @@ h3 {
 
 h4.endtext {
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .subtitle-holder {
   width: calc(100% - 70px);
   position: relative;
-  top: -35px;
-  right: -35px;
+  display: inline-block;
   border-bottom: none !important;
   text-align: center;
 }

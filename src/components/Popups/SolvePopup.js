@@ -31,8 +31,8 @@ export default function SolvePopup({ handleClose, numAttempts }) {
   const loc = formatLocation(ansData);
 
   return (
-    <div className="popup-box">
-      <div className="content-box solve">
+    <div className="popup-box" onClick={handleClose}>
+      <div className="content-box solve" onClick={(e) => e.stopPropagation()}>
         <button type="button" onClick={handleClose}>
           <i className="fa fa-times" aria-hidden="true"></i>
         </button>

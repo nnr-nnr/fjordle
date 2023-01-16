@@ -22,20 +22,19 @@ const EgGrid = ({ example, exInd, color }) => {
 
 export default function Popup({ handleClose }) {
   const isMobile = useIsMobile();
-  // console.log("Popup");
   return (
-    <div className="popup-box">
-      <div className="content-box">
+    <div className="popup-box" onClick={handleClose}>
+      <div className="content-box" onClick={(e) => e.stopPropagation()}>
         <button type="button" onClick={handleClose}>
           <i className="fa fa-times" aria-hidden="true"></i>
         </button>
         <div className="subtitle-holder">
           <span className="subtitle">HOW TO PLAY</span>
         </div>
-
         <div className="instructions">
           <p>
-            Guess the <b>FJORDLE</b> in 5 tries.
+            Guess the <b>FJORDLE</b> location shown on the Google Map in 5
+            tries.
           </p>
 
           <p>
@@ -83,7 +82,10 @@ export default function Popup({ handleClose }) {
           </p>
         </div>
 
-        <h4 className="endtext">A new FJORDLE will be available each day!</h4>
+        <h4 className="endtext">
+          {/* style={{ fontSize: ".6rem" }}> */}A new FJORDLE will be available
+          each day!
+        </h4>
       </div>
     </div>
   );
