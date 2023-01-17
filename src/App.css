@@ -49,6 +49,10 @@ button {
   left: 15px;
 }
 
+.emoji {
+  font-size: 0.85rem;
+}
+
 @media only screen and (max-width: 900px) {
   .App {
     height: 98vh;

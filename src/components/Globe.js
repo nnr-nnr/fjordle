@@ -59,7 +59,11 @@ export default function MyGlobe({ attempts }) {
       />
       {scrollMsg && (
         <p className="globe-msg">
-          Drag and zoom to see your guesses on the globe 📍.
+          Drag and zoom to see your guesses on the globe{" "}
+          <span role="img" className="emoji" aria-label="red pin">
+            📍
+          </span>
+          .
         </p>
       )}
     </div>

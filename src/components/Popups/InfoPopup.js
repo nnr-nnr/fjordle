@@ -36,23 +36,57 @@ export default function Popup({ handleClose }) {
         <div className="instructions">
           <p>
             Guess the <b>FJORDLE</b> location shown on the Google Map in 5 tries
-            🌄.
+            <span role="img" className="emoji" aria-label="sunrise over fjord">
+              {" "}
+              🌄
+            </span>
+            .
           </p>
 
           <p>
-            Zoom in and out of the map to get a better look at the area 🔎 🗺️.
-            Each guess must be a valid latitude-longitude coordinate in decimal
-            degree notation, <b>including plus-minus (+/-) signage</b> 🌐. Hit
-            the enter button to submit ✅.
+            Zoom in and out of the map to get a better look at the area{" "}
+            <span
+              role="img"
+              className="emoji"
+              aria-label="magnifying glass and map"
+            >
+              🔎 🗺️
+            </span>
+            . Each guess must be a valid latitude-longitude coordinate in
+            decimal degree notation, <b>including plus-minus (+/-) signage</b>{" "}
+            <span
+              role="img"
+              className="emoji"
+              aria-label="globe with horizonal and vertical lines"
+            >
+              🌐
+            </span>
+            . Hit the enter button to submit{" "}
+            <span role="img" className="emoji" aria-label="check mark">
+              ✅
+            </span>
+            .
           </p>
 
           <p>
             After each guess, the color of the tiles will change to indicate how
-            close your guess was to the coordinate 🟩 🟨 ⬛️.{" "}
-            {!isMobile
-              ? `Your guess will also be
-            displayed on the globe on the right ➡️.`
-              : ``}
+            close your guess was to the coordinate{" "}
+            <span role="img" className="emoji" aria-label="colored tiles">
+              🟩 🟨 ⬛️
+            </span>
+            .{" "}
+            {!isMobile ? (
+              <>
+                Your guess will also be displayed on the globe on the right
+                <span role="img" className="emoji" aria-label="arrow">
+                  {" "}
+                  ➡️
+                </span>
+                .
+              </>
+            ) : (
+              ``
+            )}
           </p>
         </div>
 
@@ -78,7 +112,11 @@ export default function Popup({ handleClose }) {
 
         <div className="contact">
           <p>
-            Found a 🪳? Reach out:{" "}
+            Found a{" "}
+            <span role="img" className="emoji" aria-label="bug">
+              🪳
+            </span>
+            ? Reach out:{" "}
             <a href="mailto:contact.fjordle@gmail.com">
               contact.fjordle@gmail.com
             </a>{" "}

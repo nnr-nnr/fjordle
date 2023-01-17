@@ -2,7 +2,7 @@ import React from "react";
 import "../style/Keyboard.css";
 import Key from "./Key";
 import { useIsMobile } from "../utils/hooks";
-import { useRowIndexUpdate } from "./Grid";
+// import { useRowIndexUpdate } from "./Grid";
 
 export default function Keyboard() {
   const isMobile = useIsMobile();

@@ -35,6 +35,7 @@ export default function Navbar({ attemptsLen }) {
             type="button"
             title="Revealed on game end"
             onClick={hasSolved ? toggleSolvePopup : null}
+            style={{ cursor: hasSolved ? "pointer" : "auto" }}
           >
             <i
               className={`fa fa-check-circle ${hasSolved ? "revealed" : ""}`}

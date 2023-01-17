@@ -37,7 +37,10 @@ export default function SolvePopup({ handleClose, numAttempts }) {
           <i className="fa fa-times" aria-hidden="true"></i>
         </button>
         <div className="subtitle-holder">
-          <span className="subtitle">SUMMARY</span>
+          <span className="subtitle">
+            <i className="fa fa-check-circle revealed" aria-hidden="true"></i>{" "}
+            SUMMARY
+          </span>
         </div>
         <div className="stats">
           <p>{solveStatusMsg(solveStatus, numAttempts)}</p>
