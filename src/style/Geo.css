@@ -13,6 +13,11 @@
   display: none;
 }
 
+.globe-msg {
+  text-align: center;
+  font-size: 9pt;
+}
+
 /* .mapHolder {
   border: grey 3pt solid !important;
   border-radius: 5px;

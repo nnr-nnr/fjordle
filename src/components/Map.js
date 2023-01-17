@@ -9,8 +9,13 @@ function Map() {
   const ansData = useAnswer();
   const hasSolved = useHasSolvedContext();
 
+  // wait until we get today's coords from db api
+  if (ansData) {
+    console.log("pssst!... today's coordinates are ", ansData.strCoords);
+  }
+
   const loader = new Loader({
-    apiKey: process.env.MAPS_INFO, //"key",
+    apiKey: "key", //process.env.MAPS_INFO, //"key",
     version: "weekly",
     libraries: ["places", "marker"],
   });
@@ -40,8 +45,6 @@ function Map() {
           },
     fullscreenControl: true,
   };
-
-  console.log("pssst!... today's coords are ", ansData.strCoords);
 
   // Promise
   loader

@@ -28,6 +28,9 @@ export default function Navbar({ attemptsLen }) {
           <button type="button" title="Info" onClick={toggleInfoPopup}>
             <i className="fa fa-info-circle" aria-hidden="true"></i>
           </button>
+          {/* <button type="button" title="Help" onClick={null}>
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+          </button> */}
           <button
             type="button"
             title="Revealed on game end"

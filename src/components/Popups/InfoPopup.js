@@ -29,26 +29,29 @@ export default function Popup({ handleClose }) {
           <i className="fa fa-times" aria-hidden="true"></i>
         </button>
         <div className="subtitle-holder">
-          <span className="subtitle">HOW TO PLAY</span>
+          <span className="subtitle">
+            <i className="fa fa-info-circle" aria-hidden="true"></i> HOW TO PLAY
+          </span>
         </div>
         <div className="instructions">
           <p>
-            Guess the <b>FJORDLE</b> location shown on the Google Map in 5
-            tries.
+            Guess the <b>FJORDLE</b> location shown on the Google Map in 5 tries
+            🌄.
           </p>
 
           <p>
+            Zoom in and out of the map to get a better look at the area 🔎 🗺️.
             Each guess must be a valid latitude-longitude coordinate in decimal
-            degree notation, <b>including plus-minus (+/-) signage</b>. Hit the
-            enter button to submit.
+            degree notation, <b>including plus-minus (+/-) signage</b> 🌐. Hit
+            the enter button to submit ✅.
           </p>
 
           <p>
             After each guess, the color of the tiles will change to indicate how
-            close your guess was to the coordinate.{" "}
+            close your guess was to the coordinate 🟩 🟨 ⬛️.{" "}
             {!isMobile
               ? `Your guess will also be
-            displayed on the globe on the right.`
+            displayed on the globe on the right ➡️.`
               : ``}
           </p>
         </div>

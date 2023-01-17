@@ -20,6 +20,8 @@ const numerifyCoords = (strCoords, index, ansCoords) => {
 export default function MyGlobe({ attempts }) {
   const [markers, setMarkers] = useState([]);
 
+  const [scrollMsg, setScrollMsg] = useState(false);
+
   const ansCoords = useAnswer().strCoords;
   const guess = attempts[attempts.length - 1];
   const isMobile = useIsMobile();
@@ -36,7 +38,11 @@ export default function MyGlobe({ attempts }) {
     }
   }, [attempts]);
   return (
-    <div className={`globeHolder ${isMobile ? "mobile" : ""}`}>
+    <div
+      className={`globeHolder ${isMobile ? "mobile" : ""}`}
+      onMouseEnter={() => setScrollMsg(true)}
+      onMouseLeave={() => setScrollMsg(false)}
+    >
       <Globe
         globeImageUrl="./earth-blue-marble.jpeg"
         backgroundColor="#FFFFFF"
@@ -51,6 +57,11 @@ export default function MyGlobe({ attempts }) {
           }:</b> <br>(${d["lat"]}, ${d["lng"]})`
         }
       />
+      {scrollMsg && (
+        <p className="globe-msg">
+          Drag and zoom to see your guesses on the globe 📍.
+        </p>
+      )}
     </div>
   );
 }

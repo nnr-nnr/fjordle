@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-
+import { useEffect } from "react";
 import { coordValues } from "../utils/Values";
+import axios from "axios";
 
 // HAS SOLVED
 const HasSolvedContext = React.createContext();
@@ -31,6 +32,7 @@ const AnswerContext = React.createContext();
 export function useAnswer() {
   return useContext(AnswerContext);
 }
+// NEW: ANS API INTEGRATION
 
 const preFixCoordStrs = (coord, isLng) => {
   const absCoord = Math.abs(coord);
@@ -65,19 +67,60 @@ const strAnswer = (lat, lng) => {
   let latStr = preFixCoordStrs(lat, false);
   let lngStr = preFixCoordStrs(lng, true);
   const ans = latStr.concat(lngStr);
-  console.log(ans);
+  // console.log(ans);
   return ans;
 };
 
 const todayCoords = () => {
-  const start = new Date("October 10, 2022 00:00:00").getTime();
+  const start = new Date("January 8, 2023 00:00:00").getTime();
   const now = Date.now();
   const nDays = Math.floor((now - start) / (60 * 60 * 1000 * 24));
   const data = coordValues[nDays % coordValues.length];
   data.strCoords = strAnswer(data.lat, data.lng);
-  // console.log("ans", data);
-  return data;
+  const [todayAns, setTodayAns] = useState(0);
+
+  useEffect(() => {
+    (async () => {
+      const response = await axios.get(
+        `https://fjordle-api.herokuapp.com/todayCoord` // API
+      );
+      const json = await response.data;
+      // console.log(json);
+      // ERROR CHECK RESPONSE
+      if (json[0] !== []) {
+        setTodayAns(json[0]);
+      } else {
+        // fail safe
+        setTodayAns({
+          lat: 38.98695,
+          lng: -94.61968,
+          city: "Overland Park",
+          prov: "Kansas",
+          state: "United States",
+          name: "Meadow Lake Country Club",
+          continent: "North America",
+          strCoords: "",
+        });
+      }
+    })();
+  }, []);
+
+  if (todayAns !== 0) {
+    todayAns.strCoords = strAnswer(todayAns.lat, todayAns.lng);
+  }
+  return todayAns;
+  // return data;
 };
+
+// OLD: When coordinate data was local
+// const todayCoords = () => {
+//   const start = new Date("January 8, 2023 00:00:00").getTime();
+//   const now = Date.now();
+//   const nDays = Math.floor((now - start) / (60 * 60 * 1000 * 24));
+//   const data = coordValues[nDays % coordValues.length];
+//   data.strCoords = strAnswer(data.lat, data.lng);
+//   return data;
+// };
 
 export function GuessProvider({ children }) {
   // ALL GUESSES
@@ -87,7 +130,7 @@ export function GuessProvider({ children }) {
   const [hasSolved, setHasSolved] = useState(0);
 
   // ANS
-  const ans = todayCoords(); //useState("+192-1732");
+  const ans = todayCoords();
 
   function updateAllGuess(letter, index, decimalIndex) {
     // console.log(letter);
