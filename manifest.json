@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Fjordle",
+  "name": "Fjordle: Daily Geography Challenge Where Wordle Meets GeoGuessr",
   "icons": [
     {
       "src": "favicon.ico",
