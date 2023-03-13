@@ -26,6 +26,10 @@ i {
   color: black;
 }
 
+i.small {
+  font-size: 15px !important;
+}
+
 i.fa-check-circle {
   color: lightgray;
 }
@@ -56,5 +60,14 @@ button {
 @media only screen and (max-width: 900px) {
   .App {
     height: 98vh;
+  }
+
+  .title {
+    font-family: "Roboto Slab", serif;
+    font-size: 2rem;
+  }
+
+  i {
+    font-size: 25px !important;
   }
 }

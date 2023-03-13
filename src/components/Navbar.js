@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import SolvePopup from "./Popups/SolvePopup";
-import Popup from "./Popups/InfoPopup";
-
+import InfoPopup from "./Popups/InfoPopup";
+import GlobePopup from "./Popups/GlobePopup";
 import { useHasSolvedContext } from "../utils/Context";
 
-export default function Navbar({ attemptsLen }) {
+export default function Navbar({ attempts }) {
   // console.log("navbar");
   const hasSolved = useHasSolvedContext();
   const [infoIsOpen, setInfoIsOpen] = useState(true); //useState(false);
   const [solveIsOpen, setSolveIsOpen] = useState(false);
+  const [globeIsOpen, setGlobeIsOpen] = useState(false);
+
+  const toggleGlobePopup = () => {
+    setGlobeIsOpen(!globeIsOpen);
+  };
   const toggleInfoPopup = () => {
     setInfoIsOpen(!infoIsOpen);
   };
@@ -27,6 +32,9 @@ export default function Navbar({ attemptsLen }) {
         <div className="icons">
           <button type="button" title="Info" onClick={toggleInfoPopup}>
             <i className="fa fa-info-circle" aria-hidden="true"></i>
+          </button>
+          <button type="button" title="Show globe" onClick={toggleGlobePopup}>
+            <i className="fa fa-solid fa-globe" aria-hidden="true"></i>
           </button>
           {/* <button type="button" title="Help" onClick={null}>
             <i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -52,10 +60,13 @@ export default function Navbar({ attemptsLen }) {
           <SolvePopup
             className="solve-popup"
             handleClose={toggleSolvePopup}
-            numAttempts={attemptsLen}
+            numAttempts={attempts.length}
           />
         )}
-        {infoIsOpen && <Popup handleClose={toggleInfoPopup} />}
+        {infoIsOpen && <InfoPopup handleClose={toggleInfoPopup} />}
+        {globeIsOpen && (
+          <GlobePopup handleClose={toggleGlobePopup} attempts={attempts} />
+        )}
       </div>
     </>
   );

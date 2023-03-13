@@ -1,15 +1,18 @@
-.guideHolder {
+.gridGuidesHolder {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
-  /* border: 1pt hotpink solid; */
+  padding-top: 10px;
 }
 
-.guide {
-  font-size: small;
-  letter-spacing: 1rem;
-  /* border: 1pt blue solid; */
+.gridGuide {
+  width: 100%;
+  text-align: center;
+  letter-spacing: 0.6rem;
+}
+
+.gridGuide > p {
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .gridHolder {
@@ -87,6 +90,7 @@ span {
 .cell.commaCell {
   border: transparent;
   color: lightgray !important;
+  font-family: "Work Sans", sans-serif; /* more readable comma in this font */
 }
 .cell.Ind0 {
   animation: flip 1s ease forwards;
@@ -136,12 +140,10 @@ span {
 
 .row.solved-row > .cell.Ind0 {
   animation: flip 1s ease forwards, solved-wave 0.75s ease forwards 1.2s;
-  /* calc(1.2s+0s); */
 }
 
 .row.solved-row > .cell.Ind1 {
   animation: flip 1s ease forwards 100ms, solved-wave 0.75s ease forwards 1.3s;
-  /* calc(1.2s+100ms); */
 }
 
 .row.solved-row > .cell.Ind2 {
@@ -259,6 +261,9 @@ span {
 /* *********** */
 
 @media only screen and (max-width: 900px) {
+  .gridGuide {
+    letter-spacing: 0rem;
+  }
   .row {
     width: calc(35 * 5 * 2px);
     height: 35px;

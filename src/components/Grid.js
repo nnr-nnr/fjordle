@@ -44,7 +44,16 @@ export default function Grid({ addAttempt, numRows = 5, attempts }) {
       <GuessIndexUpdateContext.Provider value={updateGuessIndex}>
         <RowIndexContext.Provider value={rowIndex}>
           <RowIndexUpdateContext.Provider value={updateRowIndex}>
-            <div>
+            <div className="gridAreaHolder">
+              <div className="gridGuidesHolder">
+                <div className="gridGuide">
+                  <p>L A T I T U D E</p>
+                </div>
+                <div className="gridGuide">
+                  <p>L O N G I T U D E</p>
+                </div>
+              </div>
+
               <div className="gridHolder">{rows}</div>
             </div>
           </RowIndexUpdateContext.Provider>

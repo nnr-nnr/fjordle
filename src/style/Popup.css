@@ -62,6 +62,9 @@ h4.endtext {
   border-bottom: 1pt lightgray solid;
 }
 
+.non-border-content-box {
+  border-bottom: none !important;
+}
 /* .content-box > * {
   border: hotpink 1pt solid;
 } */

@@ -4,7 +4,6 @@ import Grid from "./components/Grid";
 import Keyboard from "./components/Keyboard";
 import Map from "./components/Map";
 import { GuessProvider } from "./utils/Context";
-import MyGlobe from "./components/Globe";
 import Navbar from "./components/Navbar";
 require("dotenv").config();
 
@@ -17,8 +16,9 @@ function App() {
     <>
       <GuessProvider>
         <div className="App">
-          <Navbar attemptsLen={attempts.length} />
-          <MyGlobe attempts={attempts} />
+          <Navbar attempts={attempts} />
+          {/* Moved below Globe to GlobePopup */}
+          {/* <MyGlobe attempts={attempts} /> */}
           <div id="mapHolder"></div>
           <Map />
           <Grid addAttempt={addAttempt} attempts={attempts} />

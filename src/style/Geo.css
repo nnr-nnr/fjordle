@@ -1,13 +1,11 @@
-.globeHolder {
-  /* border-left: 1pt lightgrey solid;
-    border-bottom: 1pt lightgrey solid; */
+/* globeHolder was used when MyGlobe was stationed to top right corner */
+/* .globeHolder {
   position: fixed;
   top: calc(4rem + 10px);
   right: 10px;
-  /* border: 2pt red solid; */
   width: 200px;
   height: 200px;
-}
+} */
 
 .globeHolder.mobile {
   display: none;
@@ -18,25 +16,15 @@
   font-size: 9pt;
 }
 
-/* .mapHolder {
-  border: grey 3pt solid !important;
-  border-radius: 5px;
-  width: 450px;
-  height: 250px;
-} */
-
 #mapHolder {
   border: grey 3pt solid !important;
   border-radius: 5px;
-  width: 450px;
-  height: 250px;
+  width: 660px; /* old: 450px; */
+  height: 260px;
+  min-height: 200px; /* new */
 }
 
 @media only screen and (max-width: 900px) {
-  /* .mapHolder {
-    width: 70vw;
-    height: 20vh;
-  } */
   #mapHolder {
     width: 70vw;
     height: 20vh;

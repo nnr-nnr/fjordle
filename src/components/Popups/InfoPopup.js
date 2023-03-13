@@ -20,13 +20,15 @@ const EgGrid = ({ example, exInd, color }) => {
   );
 };
 
-export default function Popup({ handleClose }) {
+export default function InfoPopup({ handleClose }) {
   const isMobile = useIsMobile();
   return (
     <div className="popup-box" onClick={handleClose}>
       <div className="content-box" onClick={(e) => e.stopPropagation()}>
         <button type="button" onClick={handleClose}>
           <i className="fa fa-times" aria-hidden="true"></i>
+          {/* Why doesnt the below free font-awesome icon work??? */}
+          {/* <i className="fa fa-x" aria-hidden="true"></i> */}
         </button>
         <div className="subtitle-holder">
           <span className="subtitle">
@@ -74,19 +76,9 @@ export default function Popup({ handleClose }) {
             <span role="img" className="emoji" aria-label="colored tiles">
               🟩 🟨 ⬛️
             </span>
-            .{" "}
-            {!isMobile ? (
-              <>
-                Your guess will also be displayed on the globe on the right
-                <span role="img" className="emoji" aria-label="arrow">
-                  {" "}
-                  ➡️
-                </span>
-                .
-              </>
-            ) : (
-              ``
-            )}
+            . You can view the global coordinate system and your guesses in the
+            interactive globe popup{" "}
+            <i className="fa fa-solid fa-globe small" aria-hidden="true"></i>.
           </p>
         </div>
 

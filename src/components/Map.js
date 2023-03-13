@@ -6,6 +6,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 
 // GOOGLE-supported node package
 function Map() {
+  // console.log("map component called");
   const ansData = useAnswer();
   const hasSolved = useHasSolvedContext();
 
